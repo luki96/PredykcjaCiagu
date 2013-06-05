@@ -9,6 +9,7 @@ private:
 	/** Prywatny wskaznik do obiektu klasy ConsoleMenu */
 	ConsoleMenu* consoleMenu;
 
+	/** Ilosc opcji dostepnych w menu glownym programu */
 	int numberOfMenuOptions;
 
 public:
@@ -22,6 +23,9 @@ public:
 	/** Metoda wyswietla menu glowne programu */
 	void PrintApplicationMenu();
 
+	/** Getter dla pola numberOfMenuOptions
+	@return Ilosc opcji dostepnych w menu glownym programu
+	*/
 	int GetNumberOfMenuOptions()
 	{
 		return numberOfMenuOptions;

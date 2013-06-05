@@ -10,7 +10,8 @@ private:
 	/** Metoda sprawdza czy wybrano poprawna opcje z menu 
 	@param int key Kod ASCII wcisnietego klawisza
 	@param int numberOfMenuOptions Ilosc dostepnych opcji w menu programu
-	@return true, gdy klawisz odpowiadal numerowi jednej z opcji dostepnej w menu programu
+	@return true, gdy klawisz odpowiadal numerowi jednej z opcji dostepnej w menu programu. 
+	W przeciwnym wypadku wartoscia zwracana jest false
 	*/
 	bool ValidateKey(int key, int numberOfMenuOptions);
 

@@ -31,15 +31,23 @@ public:
 	/** Destruktor klasy Neuron */
 	~Neuron(void);
 
-	/** Getter dla pola outputFunction */
+	/** Getter dla pola outputFunction 
+	@return Wartosc funkcji wyjscia z neuronu
+	*/
 	double GetOutputFunction()
 	{
 		return outputFunction;
 	}
 	
-	/** Metoda oblicza wagi dla kazdego z wejsc pojedynczego neuronu */
+	/** Metoda oblicza wagi dla kazdego z wejsc pojedynczego neuronu 
+	@return true gdy uda sie obliczyc wagi dla wszystkich wejsc neuronu.
+	W przeciwnym wypadku wartoscia zwracana jest false
+	*/
 	bool CalculateNeuronInputsWeights();
 
-	/** Metoda oblicza wartosc funkcji wyjscia z neuronu */
+	/** Metoda oblicza wartosc funkcji wyjscia z neuronu 
+	@param std::vector<double> neuronInputData Tablica zawierajaca dane wejsciowe
+	podawane na kolejne wejscia pojedynczego neuronu
+	*/
 	void CalculateNeuronOutputFunction(std::vector<double> neuronInputData);
 };

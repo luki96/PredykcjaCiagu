@@ -20,12 +20,17 @@ public:
 	/** Wirtualny destruktor klasy ConsoleMenu */
 	virtual ~ConsoleMenu(void);
 
-	/** Implementacja metody z interfejsu IPrintable */
+	/** Implementacja metody z interfejsu IPrintable 
+	@param std::string message Wiadomosc, ktora ma zostac wyswietlona
+	*/
 	virtual void Print(std::string message);
 
 	/** Metoda wyswietla za pomoca metody print z interfejsu IPrintable menu programu */
 	void PrintMenu();
 
+	/** Getter dla pola menuOptions
+	@return Rozmiar tablicy menuOptions
+	*/
 	int GetSizeOfMenuOptions()
 	{
 		return menuOptions.size();
