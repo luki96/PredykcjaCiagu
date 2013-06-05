@@ -12,5 +12,17 @@ TxtFileReader::~TxtFileReader(void)
 
 bool TxtFileReader::ReadFile(string path)
 {
+	string tmpData;
+	file.open(path, ios::in);
+	if (file.good())
+	{
+		while (!file.eof())
+		{
+			file >> tmpData;
+			this->data.push_back(tmpData);
+		}
+		file.close();
+		return true;
+	}
 	return false;
 }
