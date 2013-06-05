@@ -1,5 +1,5 @@
 #pragma once
-#include "Logic\Controller.h"
+#include "..\Logic\Controller.h"
 
 class Runner
 {
