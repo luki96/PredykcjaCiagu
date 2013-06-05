@@ -10,7 +10,7 @@ private:
 	/** Prywatny wskaznik do obiektu klasy GUI */
 	GUI* gui;
 
-	/**  */
+	/** Prywatny wskaznik do obiektu klasy ConsoleMenuListener */
 	ConsoleMenuListener* consoleMenuListener ;
 
 public:
