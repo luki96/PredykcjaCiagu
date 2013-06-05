@@ -7,7 +7,11 @@ class ConsoleMenuListener
 {
 private:
 
-	/** Metoda sprawdza czy wybrano poprawna opcje z menu */
+	/** Metoda sprawdza czy wybrano poprawna opcje z menu 
+	@param int key Kod ASCII wcisnietego klawisza
+	@param int numberOfMenuOptions Ilosc dostepnych opcji w menu programu
+	@return true, gdy klawisz odpowiadal numerowi jednej z opcji dostepnej w menu programu
+	*/
 	bool ValidateKey(int key, int numberOfMenuOptions);
 
 public:
@@ -18,6 +22,10 @@ public:
 	/** Destruktor klasy ConsoleMenuListener */
 	~ConsoleMenuListener(void);
 
+	/** Metoda nasluchuje   
+	@param int numberOfMenuOptions Ilosc dostepnych opcji w menu programu
+	@return Numer opcji, ktora zostala wybrana przez uzytkownika 
+	*/
 	int ListenForKey(int numberOfMenuOptions);
 };
 
