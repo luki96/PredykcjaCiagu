@@ -11,6 +11,7 @@ Controller::Controller(void)
 Controller::~Controller(void)
 {
 	delete this->gui;
+	delete this->consoleMenuListener;
 }
 
 void Controller::Run()
