@@ -1,0 +1,9 @@
+Detekcja wycieków pamięci w VS 2010
+
+http://msdn.microsoft.com/en-us/library/x98tx3cf.aspx
+
+---------------------------------------------------------------------------------------------
+
+Wsteczna propagacja w sieciach
+
+http://edu.pjwstk.edu.pl/wyklady/nai/scb/wyklad3/w3.htm#Propagacja
