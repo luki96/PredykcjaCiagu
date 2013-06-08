@@ -24,4 +24,5 @@ public:
 	@return std::vector<int> tablica zawierajaca zawartosc wczytanego pliku
 	*/
 	virtual std::vector<int> GetData() = 0;
+
 };
