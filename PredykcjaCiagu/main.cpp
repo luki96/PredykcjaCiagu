@@ -3,10 +3,10 @@
 #include <vector>
 #include <stdlib.h>
 #include <crtdbg.h>
-#include "Neuron.h"
+#include "Logic\NeuralNetworkComponents\Neuron.h"
 #include "Runner\Runner.h"
 #include "Interfaces\IReadable.h"
-#include "Logic\NeuralNetwork.h"
+#include "Logic\NeuralNetworkComponents\NeuralNetwork.h"
 #include "Logic\DataConverter.h"
 #include "Logic\FileManager.h"
 #include "Data\TxtFileReader.h"
@@ -42,6 +42,8 @@ int main (int argc, char* argv[])
 	nn->~NeuralNetwork();
 
 	delete nn;
+	delete dc;
+	delete fm;
 	_CrtDumpMemoryLeaks();
 	system("pause");
 	return 0;
