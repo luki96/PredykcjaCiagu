@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 /** Interfejs umozliwiajacy odczyt danych z pliku */
 class IReadable
@@ -18,4 +19,9 @@ public:
 	W przeciwnym wypadku wartoscia zwracana jest false
 	*/
 	virtual bool ReadFile(std::string path) = 0;
+
+	/** Czysto wirtualny getter dla tablicy, w ktorej znajduje sie wczytany plik
+	@return std::vector<int> tablica zawierajaca zawartosc wczytanego pliku
+	*/
+	virtual std::vector<int> GetData() = 0;
 };
