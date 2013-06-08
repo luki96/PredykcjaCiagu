@@ -5,7 +5,12 @@
 #include <crtdbg.h>
 #include "Neuron.h"
 #include "Runner\Runner.h"
+#include "Interfaces\IReadable.h"
 #include "Logic\NeuralNetwork.h"
+#include "Logic\DataConverter.h"
+#include "Logic\FileManager.h"
+#include "Data\TxtFileReader.h"
+
 using namespace std;
 
 int main (int argc, char* argv[])
@@ -24,6 +29,11 @@ int main (int argc, char* argv[])
 	
 	//delete runner;
 	//delete n;
+
+	DataConverter* dc = new DataConverter;
+	FileManager* fm = new FileManager;
+	fm->ireader->ReadFile("a.txt");
+	dc->ConvertDataToSigmoidFunctionRange(fm->ireader->GetData());
 
 	NeuralNetwork* nn = new NeuralNetwork(1, 2, 5);
 	nn->CreateNetwork();
