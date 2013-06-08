@@ -12,7 +12,7 @@ TxtFileReader::~TxtFileReader(void)
 
 bool TxtFileReader::ReadFile(string path)
 {
-	string tmpData;
+	int tmpData;
 	file.open(path, ios::in);
 	if (file.good())
 	{
