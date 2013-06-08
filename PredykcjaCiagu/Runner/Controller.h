@@ -1,6 +1,8 @@
 #pragma once
 #include "..\UI\GUI.h"
 #include "..\Logic\ConsoleMenuListener.h"
+#include "..\Logic\DataConverter.h"
+#include "..\Logic\FileManager.h"
 
 /** Klasa odpowiada za sterowanie przeplywem dzialania programu */
 class Controller
@@ -11,7 +13,13 @@ private:
 	GUI* gui;
 
 	/** Prywatny wskaznik do obiektu klasy ConsoleMenuListener */
-	ConsoleMenuListener* consoleMenuListener ;
+	ConsoleMenuListener* consoleMenuListener;
+
+	/** Prywatny wskaznik do obiektu klasy DataConverter */
+	DataConverter* dataConverter;
+
+	/** Prywatny wskaznik do obiektu klasy FileManager */
+	FileManager* fileManager;
 
 public:
 	/** Bezargumentowy konstruktor klasy Controller */
