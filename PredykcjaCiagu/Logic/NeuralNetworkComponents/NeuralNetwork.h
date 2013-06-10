@@ -17,7 +17,9 @@ private:
 	NeuronContainer* head;
 	NeuronContainer* tail;
 
-public: NeuronContainer* CreateNetwork();
+public:
+
+NeuronContainer* CreateNetwork();
 
 public:
 
