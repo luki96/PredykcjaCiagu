@@ -39,23 +39,36 @@ void NetworkManager::DestroyNetwork()
 
 NeuralNetwork* NetworkManager::TeachNetwork()
 {
-
+	propagation->Propagation(network);
 	return network;
 }
 
+double NetworkManager::Calculate()
+{
+	int calculations = 0;
+
+	return calculations;
+}
 
 double NetworkManager::RunNetwork()
 {
-	double wynik = 0;
+	double result = 0;
 
-	return wynik;
+	network = CreateNetwork();
+	network = TeachNetwork();
+	result = Calculate();
+
+	return result;
 }
 
 
 double NetworkManager::ManageNeuralNetwork()
 {
-	double WynikKoncowy = 0;
+	double EndResult = 0;
 
-	return WynikKoncowy; 
+	EndResult = RunNetwork();
+	DestroyNetwork();
+
+	return EndResult; 
 }
 
