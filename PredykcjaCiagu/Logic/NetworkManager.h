@@ -1,7 +1,7 @@
 #pragma once
 #include "NeuralNetworkComponents\Neuron.h"
 #include "NeuralNetworkComponents\NeuralNetwork.h"
-#include "NeuralNetworkComponents\IPropagable.h"
+#include "..\Interfaces\IPropagable.h"
 #include "NeuralNetworkComponents\BackPropagation.h"
 
 /** Klasa menad¿erska s³u¿¹ca do obs³ugi sieci neuronowej */

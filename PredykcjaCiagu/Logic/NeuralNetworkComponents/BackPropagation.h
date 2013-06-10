@@ -1,7 +1,7 @@
 #pragma once
-#include "IPropagable.h"
+#include "..\..\Interfaces\IPropagable.h"
 
-class BackPropagation: public IPropagable 
+class BackPropagation: public IPropagable
 {
 public:
 	BackPropagation(void);
