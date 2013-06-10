@@ -12,13 +12,18 @@ private:
 	IPropagable* propagation;
 	/** Zmienna wskaŸnikowa wskazuj¹ca obiekt NeuralNetwork*/
 	NeuralNetwork* network;
+	/** Zmienne odpowiadaj¹ce za liczbê neuronów w kolejnych watstwach sieci */
+	static const int FIRST_NETWORK = 2, SECOND_NETWORK = 5, THIRD_NETWORK = 1;
+	/** Zmienna odpowiedzialna za liczbe warst sieci neuronowej */
+	static const int NETWORK_LAYERS = 3; 
+
 
 public:
 	/** Konstruktor bezargu mentowy klasy Networkmanager */
 	NetworkManager(void);
 
-	/** Destruktor klasy NetworkManager */
-	~NetworkManager(void);
+	/** Wirtualny destruktor klasy NetworkManager */
+	virtual ~NetworkManager(void);
 
 /** Metoda s³u¿¹ca do stworzenia sieci neuronowej
 	@return network -> stworzona sieæ neuronowa */
@@ -27,12 +32,18 @@ public:
 /** Metoda s³u¿¹ca do usuniêcia sieci neuronowej */
 	void DestroyNetwork();
 
-/** Metoda ucz¹ca sieæ neuronow¹ */
+/** Metoda ucz¹ca sieæ neuronow¹ 
+	@return network -> nauczona siec */
 	NeuralNetwork* TeachNetwork();
 
 /** Metoda uruchamiaj¹ca sieæ i zwracaj¹ca wynik 
-	@return wynik -> wynik obliczeñ sieci*/
+	@return Wynik -> wynik obliczeñ sieci */
 	double RunNetwork();
+
+/** Metoda do sterowania ca³ym procesem sieci neuronowej,
+	tworzenie, uczenie, obliczania, usuwanie 
+	@return WynikKoncowy -> koncowy wynik z dzialania funkcji */ 	
+	double ManageNeuralNetwork();
 
 };
 

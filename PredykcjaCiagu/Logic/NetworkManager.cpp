@@ -4,9 +4,9 @@
 
 NetworkManager::NetworkManager(void)
 {
-	int firstNetwork = 2, secondNetwork = 5, thirdNetwork = 1;
+	
 
-	network = new NeuralNetwork(firstNetwork, secondNetwork, thirdNetwork);
+	network = new NeuralNetwork(FIRST_NETWORK, SECOND_NETWORK, THIRD_NETWORK);
 	propagation = new BackPropagation();
 
 }
@@ -14,12 +14,20 @@ NetworkManager::NetworkManager(void)
 
 NetworkManager::~NetworkManager(void)
 {
+	DestroyNetwork();
+	delete network;
+	delete propagation;
 }
 
 
 NeuralNetwork* NetworkManager::CreateNetwork()
 {
+	int i = 0;
 
+	while( i < NETWORK_LAYERS)
+	{
+		network->CreateNetwork();
+	}
 
 	return network;
 }
@@ -30,5 +38,23 @@ void NetworkManager::DestroyNetwork()
 	network->~NeuralNetwork();
 }
 
+NeuralNetwork* NetworkManager::TeachNetwork()
+{
 
+	return network;
+}
+
+double NetworkManager::RunNetwork()
+{
+	double wynik = 0;
+
+	return wynik;
+}
+
+double NetworkManager::ManageNeuralNetwork()
+{
+	double WynikKoncowy = 0;
+
+	return WynikKoncowy; 
+}
 
