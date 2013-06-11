@@ -1,17 +1,16 @@
 #pragma once
 #include "NeuralNetworkComponents\Neuron.h"
 #include "NeuralNetworkComponents\NeuralNetwork.h"
-#include "..\Interfaces\IPropagable.h"
 #include "NeuralNetworkComponents\BackPropagation.h"
 
 /** Klasa menad¿erska s³u¿¹ca do obs³ugi sieci neuronowej */
 class NetworkManager
 {
 private:
-	/** Zmienna wskaŸnikowa interfejsu, wskazuj¹ca obiekt klasy BackPropagation */
-	IPropagable* propagation;
 	/** Zmienna wskaŸnikowa wskazuj¹ca obiekt NeuralNetwork*/
 	NeuralNetwork* network;
+	/** WkaŸnijk na obiekt, typu interfejsu IPropagable */
+	IPropagable* propagation;
 	/** Zmienne odpowiadaj¹ce za liczbê neuronów w kolejnych watstwach sieci */
 	static const int FIRST_NETWORK = 2, SECOND_NETWORK = 5, THIRD_NETWORK = 1;
 	/** Zmienna odpowiedzialna za liczbe warst sieci neuronowej */
@@ -25,25 +24,19 @@ public:
 	/** Wirtualny destruktor klasy NetworkManager */
 	virtual ~NetworkManager(void);
 
-/** Metoda s³u¿¹ca do stworzenia sieci neuronowej
+	/** Metoda s³u¿¹ca do stworzenia sieci neuronowej
 	@return network -> stworzona sieæ neuronowa */
 	NeuralNetwork* CreateNetwork();
 
-/** Metoda s³u¿¹ca do usuniêcia sieci neuronowej */
+	/** Metoda s³u¿¹ca do usuniêcia sieci neuronowej */
 	void DestroyNetwork();
 
-/** Metoda ucz¹ca sieæ neuronow¹ 
-	@return network -> nauczona siec */
-	NeuralNetwork* TeachNetwork();
+	/** Metoda licz¹ca wynik za pomoc¹ sieci neuronowej */
+	double Calculate();
 
-/** Metoda uruchamiaj¹ca sieæ i zwracaj¹ca wynik 
+	/** Metoda uruchamiaj¹ca sieæ i zwracaj¹ca wynik 
 	@return Wynik -> wynik obliczeñ sieci */
 	double RunNetwork();
-
-/** Metoda do sterowania ca³ym procesem sieci neuronowej,
-	tworzenie, uczenie, obliczania, usuwanie 
-	@return WynikKoncowy -> koncowy wynik z dzialania funkcji */ 	
-	double ManageNeuralNetwork();
 
 };
 

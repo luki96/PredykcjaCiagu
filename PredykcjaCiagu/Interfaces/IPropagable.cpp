@@ -9,4 +9,3 @@ IPropagable::IPropagable(void)
 IPropagable::~IPropagable(void)
 {
 }
-

@@ -1,5 +1,7 @@
 #pragma once
+#include "NeuralNetwork.h"
 #include "..\..\Interfaces\IPropagable.h"
+
 
 /** Klasa dziedzicz¹ca interfejs IPropagable
 	s³u¿¹ca do wykonania propagacji wstecznej */ 
@@ -12,7 +14,7 @@ public:
 	/** Wirtualny destruktor klasy BackPropagation */ 
 	virtual ~BackPropagation(void);
 
-	/** Wirtualna metoda z interfejsu IPropagable */
-	virtual NeuralNetwork* Propagation(NeuralNetwork* );
+    virtual NeuralNetwork* BackPropagationMethod(NeuralNetwork* );
+
 };
 
