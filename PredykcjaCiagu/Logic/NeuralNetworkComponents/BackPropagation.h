@@ -1,4 +1,5 @@
 #pragma once
+#include "Neuron.h"
 #include "NeuralNetwork.h"
 #include "..\..\Interfaces\IPropagable.h"
 
