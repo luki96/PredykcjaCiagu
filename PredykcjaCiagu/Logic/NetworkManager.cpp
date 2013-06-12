@@ -7,6 +7,7 @@ NetworkManager::NetworkManager(void)
 	network = new NeuralNetwork(FIRST_NETWORK, SECOND_NETWORK, THIRD_NETWORK);
 	propagation = new BackPropagation(); 
 	reader = new TxtFileReader();
+	temp1 = temp2 = 0;
 }
 
 
@@ -50,7 +51,6 @@ void NetworkManager::TeachNetwork()
 	{
 		while (i < dataSize)
 		{
-			int temp1, temp2;
 			temp1 = data[i];
 			temp2 = data[i+i];
 			network = propagation->BackPropagationMethod(temp1, temp2, network);
@@ -68,6 +68,7 @@ double NetworkManager::Calculate()
 {
 	double result = 0;
 
+	result = propagation->NetworkResult(temp1, temp2, network);
 	return result;
 }
 

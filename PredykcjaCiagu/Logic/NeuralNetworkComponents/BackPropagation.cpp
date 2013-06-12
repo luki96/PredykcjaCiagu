@@ -18,3 +18,10 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(int x, int y, NeuralNetwor
 
 	return net;
 }
+
+double BackPropagation::NetworkResult(int x, int y, NeuralNetwork* net)
+{
+	double netResult = 0;
+
+	return netResult; 
+}

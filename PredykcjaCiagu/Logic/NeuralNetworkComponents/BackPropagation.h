@@ -14,7 +14,11 @@ public:
 	/** Wirtualny destruktor klasy BackPropagation */ 
 	virtual ~BackPropagation(void);
 
+	/** Wirtualna metoda z interfejsu IPropagable, pozwalaj¹ca na wsteczn¹ propagacjê sieci neuronowej */
     virtual NeuralNetwork* BackPropagationMethod(int, int, NeuralNetwork* );
+
+	/** Wirtualna metoda z interfejsu IPropagable, pozwalaj¹ca na uzyskanie wyników z sieci neuronowej */
+	virtual double NetworkResult(int, int, NeuralNetwork* );
 
 };
 

@@ -21,6 +21,8 @@ private:
 	static const int FIRST_NETWORK = 2, SECOND_NETWORK = 5, THIRD_NETWORK = 1;
 	/** Zmienna odpowiedzialna za liczbe warst sieci neuronowej */
 	static const int NETWORK_LAYERS = 3; 
+	/** Zmienne tymczasowe na wartoœci z pliku (z klasy TXTFileReader) */
+	int temp1, temp2;
 
 
 public:
