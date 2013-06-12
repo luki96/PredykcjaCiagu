@@ -14,7 +14,7 @@ public:
 	/** Wirtualny destruktor klasy BackPropagation */ 
 	virtual ~BackPropagation(void);
 
-    virtual NeuralNetwork* BackPropagationMethod(NeuralNetwork* );
+    virtual NeuralNetwork* BackPropagationMethod(int, int, NeuralNetwork* );
 
 };
 

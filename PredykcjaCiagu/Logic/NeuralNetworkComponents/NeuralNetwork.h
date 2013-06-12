@@ -9,6 +9,7 @@ private:
 
 	int network1, network2, network3, flag;
 
+public:
 
 	struct NeuronContainer
 	{
@@ -18,8 +19,6 @@ private:
 
 	NeuronContainer* head;
 	NeuronContainer* tail;
-
-public:
 
 NeuronContainer* CreateNetwork();
 

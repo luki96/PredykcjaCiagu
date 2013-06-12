@@ -10,9 +10,11 @@ BackPropagation::~BackPropagation(void)
 {
 }
 
-NeuralNetwork* BackPropagation::BackPropagationMethod(NeuralNetwork* net)
+NeuralNetwork* BackPropagation::BackPropagationMethod(int x, int y, NeuralNetwork* net)
 {
 	double wynik = 0;
+
+	
 
 	return net;
 }

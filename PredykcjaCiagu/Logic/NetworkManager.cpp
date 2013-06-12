@@ -6,6 +6,7 @@ NetworkManager::NetworkManager(void)
 {
 	network = new NeuralNetwork(FIRST_NETWORK, SECOND_NETWORK, THIRD_NETWORK);
 	propagation = new BackPropagation(); 
+	reader = new TxtFileReader();
 }
 
 
@@ -13,6 +14,7 @@ NetworkManager::~NetworkManager(void)
 {
 	DestroyNetwork();
 	delete network;
+	delete propagation;
 }
 
 
@@ -35,20 +37,46 @@ void NetworkManager::DestroyNetwork()
 }
 
 
-double NetworkManager::Calculate()
+void NetworkManager::TeachNetwork()
 {
-	int calculations = 0;
+	int i = 0;
+	int dataSize = 0;
+	std::vector<int> data;
+	
+	data.swap(reader->GetData());
+	dataSize = data.size();
 
-	return calculations;
+	if (dataSize >= 2)
+	{
+		while (i < dataSize)
+		{
+			int temp1, temp2;
+			temp1 = data[i];
+			temp2 = data[i+i];
+			network = propagation->BackPropagationMethod(temp1, temp2, network);
+			i++;
+		}
+	}
+	else
+	{
+		//TODO: wzorzec obserwatora / wypisywanie 
+		std::cout << "Wprowadzono zbyt ma³o danych, aby sieæ mog³a zadzia³aæ." << std::endl;
+	}
 }
 
+double NetworkManager::Calculate()
+{
+	double result = 0;
+
+	return result;
+}
 
 double NetworkManager::RunNetwork()
 {
 	double result = 0;
 
 	network = CreateNetwork();
-
+	TeachNetwork();
 	result = Calculate();
 
 	return result;
