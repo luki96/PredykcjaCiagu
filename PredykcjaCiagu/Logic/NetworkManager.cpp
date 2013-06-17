@@ -8,6 +8,8 @@ NetworkManager::NetworkManager(void)
 	propagation = new BackPropagation(); 
 	reader = new TxtFileReader();
 	temp1 = temp2 = 0;
+
+	reader->ReadFile("a.txt");
 }
 
 
@@ -26,6 +28,7 @@ NeuralNetwork* NetworkManager::CreateNetwork()
 	while( i < NETWORK_LAYERS)
 	{
 		network->CreateNetwork();
+		i++;
 	}
 
 	return network;
@@ -41,8 +44,7 @@ void NetworkManager::DestroyNetwork()
 void NetworkManager::TeachNetwork()
 {
 	int i = 0;
-	int dataSize = 0;
-	std::vector<int> data;
+	dataSize = 0;
 	
 	data.swap(reader->GetData());
 	dataSize = data.size();
@@ -81,8 +83,10 @@ double NetworkManager::RunNetwork()
 
 	network = CreateNetwork();
 	TeachNetwork();
-	result = Calculate();
-
+	if (dataSize >= 2)
+	{
+		result = Calculate();
+	}
 	return result;
 }
 

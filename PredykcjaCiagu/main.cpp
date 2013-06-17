@@ -10,6 +10,9 @@
 #include "Logic\DataConverter.h"
 #include "Logic\FileManager.h"
 #include "Data\TxtFileReader.h"
+//
+#include "Logic\NetworkManager.h"
+//
 
 using namespace std;
 
@@ -34,16 +37,21 @@ int main (int argc, char* argv[])
 	FileManager* fm = new FileManager;
 	fm->ireader->ReadFile("a.txt");
 	dc->ConvertDataToSigmoidFunctionRange(fm->ireader->GetData());
+	
+	NetworkManager* network = new NetworkManager();
 
-	NeuralNetwork* nn = new NeuralNetwork(1, 2, 5);
-	nn->CreateNetwork();
-	nn->CreateNetwork();
-	nn->CreateNetwork();
-	nn->~NeuralNetwork();
+	network -> RunNetwork();
 
-	delete nn;
-	delete dc;
-	delete fm;
+
+	//NeuralNetwork* nn = new NeuralNetwork(1, 2, 5);
+	//nn->CreateNetwork();
+	//nn->CreateNetwork();
+	//nn->CreateNetwork();
+	//nn->~NeuralNetwork();
+
+	//delete nn;
+	//delete dc;
+	//delete fm;
 	_CrtDumpMemoryLeaks();
 	system("pause");
 	return 0;
