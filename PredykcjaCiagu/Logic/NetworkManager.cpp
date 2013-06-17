@@ -49,13 +49,16 @@ void NetworkManager::TeachNetwork()
 
 	if (dataSize >= 2)
 	{
-		while (i < dataSize)
+		while ((i+1) < dataSize)
 		{
 			temp1 = data[i];
-			temp2 = data[i+i];
+			temp2 = data[i+1];
 			network = propagation->BackPropagationMethod(temp1, temp2, network);
 			i++;
 		}
+		// przygotowanie danych do metody Calculate (by tam ponownie nie iterowaæ po tablicy)
+		temp1 = data[i];
+		temp2 = data[i+1];
 	}
 	else
 	{
@@ -67,6 +70,7 @@ double NetworkManager::Calculate()
 {
 	double result = 0;
 
+	// temp1 i temp2 zosta³y uprzednio przygotowane przez metodê TeachNetwork, po zakoñczeniu jej pêtli g³ównej 
 	result = propagation->NetworkResult(temp1, temp2, network);
 	return result;
 }
