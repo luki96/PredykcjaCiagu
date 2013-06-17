@@ -15,8 +15,8 @@ using namespace std;
 
 int main (int argc, char* argv[])
 {
-	//Runner* runner = new Runner;
-	//runner->RunProgram();
+	Runner* runner = new Runner;
+	runner->RunProgram();
 	//Neuron* n = new Neuron(5);
 	//vector<double> tab;
 	//tab.push_back(0.1);
