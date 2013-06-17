@@ -3,6 +3,7 @@
 #include "..\Logic\ConsoleMenuListener.h"
 #include "..\Logic\DataConverter.h"
 #include "..\Logic\FileManager.h"
+#include "..\Logic\NetworkManager.h"
 
 /** Klasa odpowiada za sterowanie przeplywem dzialania programu */
 class Controller
@@ -20,6 +21,9 @@ private:
 
 	/** Prywatny wskaznik do obiektu klasy FileManager */
 	FileManager* fileManager;
+
+	/** Prywatny wskaünik do obiektu klasy NetworkManager */
+	NetworkManager* network;
 
 public:
 	/** Bezargumentowy konstruktor klasy Controller */

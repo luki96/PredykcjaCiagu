@@ -101,11 +101,11 @@ double BackPropagation::NetworkResult(int lastX, int lastY, NeuralNetwork* net)
 
 		if (i == 0)
 		{
-			parameters[0] = x;
+			parameters[0] = lastX;
 		}
 		else if (i == 1)
 		{
-			parameters[0] = y;
+			parameters[0] = lastY;
 		}
 		else
 		{

@@ -7,6 +7,7 @@ Controller::Controller(void)
 	this->consoleMenuListener = new ConsoleMenuListener;
 	this->dataConverter = new DataConverter;
 	this->fileManager = new FileManager;
+	this->network = new NetworkManager();
 }
 
 
@@ -22,4 +23,5 @@ void Controller::Run()
 {
 	gui->PrintApplicationMenu();
 	consoleMenuListener->ListenForKey(gui->GetNumberOfMenuOptions());
+
 }
