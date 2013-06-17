@@ -8,6 +8,7 @@ NetworkManager::NetworkManager(void)
 	propagation = new BackPropagation(); 
 	reader = new TxtFileReader();
 	temp1 = temp2 = 0;
+	converter = new DataConverter();
 
 	reader->ReadFile("a.txt");
 }
@@ -46,21 +47,27 @@ void NetworkManager::TeachNetwork()
 	int i = 0;
 	dataSize = 0;
 	
+	convertedData.clear();
+	data.clear();
+
 	data.swap(reader->GetData());
 	dataSize = data.size();
+	converter->ConvertDataToSigmoidFunctionRange(data);
+	convertedData.swap(converter->GetConvertedData());
+
 
 	if (dataSize >= 2)
 	{
-		while ((i+1) < dataSize)
+		while ((i+2) < dataSize)
 		{
-			temp1 = data[i];
-			temp2 = data[i+1];
+			temp1 = convertedData[i];
+			temp2 = convertedData[i+1];
 			network = propagation->BackPropagationMethod(temp1, temp2, network);
 			i++;
 		}
 		// przygotowanie danych do metody Calculate (by tam ponownie nie iterowaæ po tablicy)
-		temp1 = data[i];
-		temp2 = data[i+1];
+		temp1 = convertedData[i];
+		temp2 = convertedData[i+1];
 	}
 	else
 	{

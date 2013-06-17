@@ -4,6 +4,7 @@
 #include "NeuralNetworkComponents\BackPropagation.h"
 #include "..\Data\TxtFileReader.h"
 #include "..\Interfaces\IReadable.h"
+#include "..\Logic\DataConverter.h"
 #include <vector>
 #include <iostream>
 
@@ -22,10 +23,13 @@ private:
 	/** Zmienna odpowiedzialna za liczbe warst sieci neuronowej */
 	static const int NETWORK_LAYERS = 3; 
 	/** Zmienne tymczasowe na wartoœci z pliku (z klasy TXTFileReader) */
-	int temp1, temp2;
+	double temp1, temp2;
+
+	DataConverter* converter;
 
 	int dataSize;
 	std::vector<int> data;
+	std::vector<double> convertedData;
 
 
 public:

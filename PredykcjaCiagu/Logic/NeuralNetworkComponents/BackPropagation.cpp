@@ -3,7 +3,6 @@
 
 BackPropagation::BackPropagation(void)
 {
-	converter = new DataConverter();
 }
 
 
@@ -11,7 +10,7 @@ BackPropagation::~BackPropagation(void)
 {
 }
 
-NeuralNetwork* BackPropagation::BackPropagationMethod(int x, int y, NeuralNetwork* net)
+NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, NeuralNetwork* net)
 {
 	int NETWORK_ONE = 2, NETWORK_TWO = 5, NETWORK_THREE = 1;
 	int i = 0;
@@ -21,8 +20,7 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(int x, int y, NeuralNetwor
 
 	while (i < NETWORK_ONE)
 	{
-		std::vector<int> parameters;
-		std::vector<double> convertedParameters;
+		std::vector<double> parameters;
 
 		if (i == 0)
 		{
@@ -39,12 +37,7 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(int x, int y, NeuralNetwor
 			parameters[0] = 0;
 		}
 
-		convertedParameters.clear();
-		converter->ConvertDataToSigmoidFunctionRange(parameters);
-		parameters.clear();
-		convertedParameters.swap(converter->GetConvertedData());
-
-		net->head->neurons[i]->CalculateNeuronOutputFunction(convertedParameters);
+		net->head->neurons[i]->CalculateNeuronOutputFunction(parameters);
 		neuronsResults.push_back(net->head->neurons[i]->GetOutputFunction());
 
 		i++;
@@ -55,18 +48,12 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(int x, int y, NeuralNetwor
 
 	while (i < NETWORK_TWO)
 	{
-		std::vector<int> parameters;
-		std::vector<double> convertedParameters;
+		std::vector<double> parameters;
 
 		parameters.push_back(neuronsResults[0]);
 		parameters.push_back(neuronsResults[1]);
 
-		convertedParameters.clear();
-		converter->ConvertDataToSigmoidFunctionRange(parameters);
-		parameters.clear();
-		convertedParameters.swap(converter->GetConvertedData());
-
-		net->head->next->neurons[i]->CalculateNeuronOutputFunction(convertedParameters);
+		net->head->next->neurons[i]->CalculateNeuronOutputFunction(parameters);
 		neuronsResults.push_back(net->head->next->neurons[i]->GetOutputFunction());
 
 		i++;
@@ -78,21 +65,16 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(int x, int y, NeuralNetwor
 	while (i < NETWORK_THREE)
 	{
 		int count = 0;
-		std::vector<int> parameters;
-		std::vector<double> convertedParameters;
+		std::vector<double> parameters;
 
-		while (count < tab)
+		// u¿ywamy w tej pêtli NETWORK_ONE aby pomin¹æ elementy z pierwszej sieci neuronowej 
+		while ((count+NETWORK_ONE) < tab)
 		{
-			parameters.push_back(neuronsResults[count]);
+			parameters.push_back(neuronsResults[count+NETWORK_ONE]);
 			count ++;
 		}
 
-		convertedParameters.clear();
-		converter->ConvertDataToSigmoidFunctionRange(parameters);
-		parameters.clear();
-		convertedParameters.swap(converter->GetConvertedData());
-
-		net->tail->neurons[i]->CalculateNeuronOutputFunction(convertedParameters);
+		net->tail->neurons[i]->CalculateNeuronOutputFunction(parameters);
 		neuronsResults.push_back(net->tail->neurons[i]->GetOutputFunction());
 
 		i++;
@@ -107,7 +89,7 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(int x, int y, NeuralNetwor
 }
 
 
-double BackPropagation::NetworkResult(int lastX, int lastY, NeuralNetwork* net)
+double BackPropagation::NetworkResult(double lastX, double lastY, NeuralNetwork* net)
 {
 	double finalNetResult = 0;
 
@@ -118,8 +100,7 @@ double BackPropagation::NetworkResult(int lastX, int lastY, NeuralNetwork* net)
 
 	while (i < NETWORK_ONE)
 	{
-		std::vector<int> parameters;
-		std::vector<double> convertedParameters;
+		std::vector<double> parameters;
 
 		if (i == 0)
 		{
@@ -135,14 +116,8 @@ double BackPropagation::NetworkResult(int lastX, int lastY, NeuralNetwork* net)
 			parameters.clear();
 			parameters.push_back(0);
 		}
-
-		convertedParameters.clear();
-		converter->ConvertDataToSigmoidFunctionRange(parameters);
-		parameters.clear();
-		convertedParameters.swap(converter->GetConvertedData());
-
-
-		net->head->neurons[i]->CalculateNeuronOutputFunction(convertedParameters);
+		
+		net->head->neurons[i]->CalculateNeuronOutputFunction(parameters);
 		neuronsTempResults.push_back(net->head->neurons[i]->GetOutputFunction());
 
 		i++;
@@ -153,19 +128,12 @@ double BackPropagation::NetworkResult(int lastX, int lastY, NeuralNetwork* net)
 
 	while (i < NETWORK_TWO)
 	{
-		std::vector<int> parameters;
-		std::vector<double> convertedParameters;
+		std::vector<double> parameters;
 
 		parameters.push_back(neuronsTempResults[0]);
 		parameters.push_back(neuronsTempResults[1]);
 
-		convertedParameters.clear();
-		converter->ConvertDataToSigmoidFunctionRange(parameters);
-		parameters.clear();
-		convertedParameters.swap(converter->GetConvertedData());
-
-
-		net->head->next->neurons[i]->CalculateNeuronOutputFunction(convertedParameters);
+		net->head->next->neurons[i]->CalculateNeuronOutputFunction(parameters);
 		neuronsTempResults.push_back(net->head->next->neurons[i]->GetOutputFunction());
 
 		i++;
@@ -177,21 +145,16 @@ double BackPropagation::NetworkResult(int lastX, int lastY, NeuralNetwork* net)
 	while (i < NETWORK_THREE)
 	{
 		int count = 0;
-		std::vector<int> parameters;
-		std::vector<double> convertedParameters;
+		std::vector<double> parameters;
 
-		while (count < tab)
+		// u¿ywamy w tej pêtli NETWORK_ONE aby pomin¹æ elementy z pierwszej sieci neuronowej 
+		while ((count+NETWORK_ONE) < tab)
 		{
-			parameters.push_back(neuronsTempResults[count]);
+			parameters.push_back(neuronsTempResults[count+NETWORK_ONE]);
 			count ++;
 		}
 
-		convertedParameters.clear();
-		converter->ConvertDataToSigmoidFunctionRange(parameters);
-		parameters.clear();
-		convertedParameters.swap(converter->GetConvertedData());
-
-		net->tail->neurons[i]->CalculateNeuronOutputFunction(convertedParameters);
+		net->tail->neurons[i]->CalculateNeuronOutputFunction(parameters);
 		neuronsTempResults.push_back(net->tail->neurons[i]->GetOutputFunction());
 
 		i++;

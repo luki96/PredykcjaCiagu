@@ -36,6 +36,7 @@ void Neuron::CalculateNeuronOutputFunction(vector<double> neuronInputData)
 {
 	for (int i = 0; i < numberOfNeuronInputs; i++)
 	{
-		this->outputFunction += (neuronInputData[i] * this->weightsOfNeuronInputs[i]);
+		//TODO: wystêpuje b³¹d z weightsOfNeuronInputs
+		this->outputFunction += (neuronInputData[i]);// * this->weightsOfNeuronInputs[i]);
 	}
 }

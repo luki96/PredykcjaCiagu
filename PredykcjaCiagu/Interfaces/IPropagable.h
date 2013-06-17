@@ -12,8 +12,8 @@ public:
 
 	~IPropagable(void);
 
-	virtual NeuralNetwork* BackPropagationMethod(int, int, NeuralNetwork* ) = 0;
+	virtual NeuralNetwork* BackPropagationMethod(double, double, NeuralNetwork* ) = 0;
 
-	virtual double NetworkResult(int, int, NeuralNetwork* ) = 0;
+	virtual double NetworkResult(double, double, NeuralNetwork* ) = 0;
 };
 
