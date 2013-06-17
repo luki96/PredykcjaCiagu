@@ -33,8 +33,6 @@ private:
 	/** Zmienne tymczasowe na wartoœci z pliku (z klasy TXTFileReader) */
 	double temp1, temp2;
 
-	DataConverter* converter;
-
 	/** Zmienna przechowuj¹ca wielkoœæ tablicy, danych wprowadzonych przez u¿ytkownika */ 
 	int dataSize;
 
