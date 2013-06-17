@@ -67,9 +67,10 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, Neural
 		int count = 0;
 		std::vector<double> parameters;
 
-		while (count < tab)
+		// u¿ywamy w tej pêtli NETWORK_ONE aby pomin¹æ elementy z pierwszej sieci neuronowej 
+		while ((count+NETWORK_ONE) < tab)
 		{
-			parameters.push_back(neuronsResults[count]);
+			parameters.push_back(neuronsResults[count+NETWORK_ONE]);
 			count ++;
 		}
 
@@ -146,9 +147,10 @@ double BackPropagation::NetworkResult(double lastX, double lastY, NeuralNetwork*
 		int count = 0;
 		std::vector<double> parameters;
 
-		while (count < tab)
+		// u¿ywamy w tej pêtli NETWORK_ONE aby pomin¹æ elementy z pierwszej sieci neuronowej 
+		while ((count+NETWORK_ONE) < tab)
 		{
-			parameters.push_back(neuronsTempResults[count]);
+			parameters.push_back(neuronsTempResults[count+NETWORK_ONE]);
 			count ++;
 		}
 

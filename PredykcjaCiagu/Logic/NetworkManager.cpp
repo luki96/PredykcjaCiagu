@@ -58,7 +58,7 @@ void NetworkManager::TeachNetwork()
 
 	if (dataSize >= 2)
 	{
-		while ((i+1) < dataSize)
+		while ((i+2) < dataSize)
 		{
 			temp1 = convertedData[i];
 			temp2 = convertedData[i+1];
