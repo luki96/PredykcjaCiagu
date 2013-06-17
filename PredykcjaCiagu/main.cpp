@@ -16,43 +16,42 @@ using namespace std;
 
 int main (int argc, char* argv[])
 {
-//Runner* runner = new Runner;
-//runner->RunProgram();
-Neuron* n = new Neuron(5);
-//vector<double> tab;
-//tab.push_back(0.1);
-//tab.push_back(0.3);
-//tab.push_back(0.9);
-//tab.push_back(0.4);
-//tab.push_back(0.5);
-//n->CalculateNeuronInputsWeights();
-//n->CalculateNeuronOutputFunction(tab);
+	Runner* runner = new Runner;
+	runner->RunProgram();
+	//Neuron* n = new Neuron(5);
+	//vector<double> tab;
+	//tab.push_back(0.1);
+	//tab.push_back(0.3);
+	//tab.push_back(0.9);
+	//tab.push_back(0.4);
+	//tab.push_back(0.5);
+	//n->CalculateNeuronInputsWeights();
+	//n->CalculateNeuronOutputFunction(tab);
 
-//delete runner;
-//delete n;
+	//delete runner;
+	//delete n;
 
-DataConverter* dc = new DataConverter;
-FileManager* fm = new FileManager;
-fm->ireader->ReadFile("a.txt");
-dc->ConvertDataToSigmoidFunctionRange(fm->ireader->GetData());
-n->CalculateNeuronInputsWeights();
-n->CalculateNeuronOutputFunction(dc->GetConvertedData());
+	//DataConverter* dc = new DataConverter;
+	//FileManager* fm = new FileManager;
+	//fm->ireader->ReadFile("a.txt");
+	//dc->ConvertDataToSigmoidFunctionRange(fm->ireader->GetData());
+	//n->CalculateNeuronInputsWeights();
+	//n->CalculateNeuronOutputFunction(dc->GetConvertedData());
 
-NetworkManager* network = new NetworkManager();
+	//NetworkManager* network = new NetworkManager();
+	//network -> RunNetwork();
 
-network -> RunNetwork();
 
+	//NeuralNetwork* nn = new NeuralNetwork(1, 2, 5);
+	//nn->CreateNetwork();
+	//nn->CreateNetwork();
+	//nn->CreateNetwork();
+	//nn->~NeuralNetwork();
 
-//NeuralNetwork* nn = new NeuralNetwork(1, 2, 5);
-//nn->CreateNetwork();
-//nn->CreateNetwork();
-//nn->CreateNetwork();
-//nn->~NeuralNetwork();
-
-//delete nn;
-//delete dc;
-//delete fm;
-_CrtDumpMemoryLeaks();
-system("pause");
-return 0;
+	//delete nn;
+	//delete dc;
+	//delete fm;
+	_CrtDumpMemoryLeaks();
+	system("pause");
+	return 0;
 }
