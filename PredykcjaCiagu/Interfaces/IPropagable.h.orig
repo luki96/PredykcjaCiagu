@@ -15,11 +15,17 @@ public:
 	/** Wirtualny destruktor */
 	~IPropagable(void);
 
+<<<<<<< HEAD
+	virtual NeuralNetwork* BackPropagationMethod(double, double, NeuralNetwork* ) = 0;
+
+	virtual double NetworkResult(double, double, NeuralNetwork* ) = 0;
+=======
 	/** Czysto wirtualna metoda do uczenia siecii neuronowej */
 	virtual NeuralNetwork* BackPropagationMethod(double, double, NeuralNetwork* ) = 0;
 
 	/** Czysto wirtualna metoda, do wykonania ostatnich obliczeñ, na siecii */
 	virtual double NetworkResult(double, double, NeuralNetwork* ) = 0;
 
+>>>>>>> 6a6f830da2f0ea137ba251f306f2fab6e7976ceb
 };
 

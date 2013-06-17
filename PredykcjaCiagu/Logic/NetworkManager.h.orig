@@ -32,14 +32,18 @@ private:
 
 	/** Zmienne tymczasowe na wartoœci z pliku (z klasy TXTFileReader) */
 	double temp1, temp2;
+<<<<<<< HEAD
 
 	DataConverter* converter;
+=======
+>>>>>>> 6a6f830da2f0ea137ba251f306f2fab6e7976ceb
 
 	/** Zmienna przechowuj¹ca wielkoœæ tablicy, danych wprowadzonych przez u¿ytkownika */ 
 	int dataSize;
 
 	/** Tablica danych wprowadzonych przez uzytkownika */ 
 	std::vector<int> data;
+	std::vector<double> convertedData;
 
 	/** Skonwertowana tablica danych */ 
 	std::vector<double> convertedData;
