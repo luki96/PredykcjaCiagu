@@ -85,11 +85,14 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(int x, int y, NeuralNetwor
 	return net;
 }
 
-double BackPropagation::NetworkResult(int x, int y, NeuralNetwork* net)
+double BackPropagation::NetworkResult(int lastX, int lastY, NeuralNetwork* net)
 {
-	double netResult = 0;
+	double finalNetResult = 0;
 
-	//TODO: Obliczanie wyniku koñcowego
+	int NETWORK_ONE = 2, NETWORK_TWO = 5, NETWORK_THREE = 1;
+	int i = 0;
 
-	return netResult; 
+
+
+	return finalNetResult; 
 }

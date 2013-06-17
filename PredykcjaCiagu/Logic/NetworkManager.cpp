@@ -59,7 +59,6 @@ void NetworkManager::TeachNetwork()
 	}
 	else
 	{
-		//TODO: wzorzec obserwatora / wypisywanie 
 		std::cout << "Wprowadzono zbyt ma³o danych, aby sieæ mog³a zadzia³aæ." << std::endl;
 	}
 }
