@@ -20,7 +20,7 @@ int main (int argc, char* argv[])
 {
 	Runner* runner = new Runner;
 	runner->RunProgram();
-	//Neuron* n = new Neuron(5);
+	Neuron* n = new Neuron(5);
 	//vector<double> tab;
 	//tab.push_back(0.1);
 	//tab.push_back(0.3);
@@ -37,7 +37,9 @@ int main (int argc, char* argv[])
 	FileManager* fm = new FileManager;
 	fm->ireader->ReadFile("a.txt");
 	dc->ConvertDataToSigmoidFunctionRange(fm->ireader->GetData());
-	
+	//n->CalculateNeuronInputsWeights();
+	//n->CalculateNeuronOutputFunction(dc->GetConvertedData());
+
 	NetworkManager* network = new NetworkManager();
 
 	network -> RunNetwork();
