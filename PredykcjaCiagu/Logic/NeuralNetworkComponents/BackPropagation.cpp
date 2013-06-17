@@ -37,6 +37,7 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, Neural
 			parameters[0] = 0;
 		}
 
+		net->head->neurons[i]->CalculateNeuronInputsWeights();
 		net->head->neurons[i]->CalculateNeuronOutputFunction(parameters);
 		neuronsResults.push_back(net->head->neurons[i]->GetOutputFunction());
 
@@ -53,6 +54,7 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, Neural
 		parameters.push_back(neuronsResults[0]);
 		parameters.push_back(neuronsResults[1]);
 
+		net->head->next->neurons[i]->CalculateNeuronInputsWeights();
 		net->head->next->neurons[i]->CalculateNeuronOutputFunction(parameters);
 		neuronsResults.push_back(net->head->next->neurons[i]->GetOutputFunction());
 
@@ -74,6 +76,7 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, Neural
 			count ++;
 		}
 
+		net->tail->neurons[i]->CalculateNeuronInputsWeights();
 		net->tail->neurons[i]->CalculateNeuronOutputFunction(parameters);
 		neuronsResults.push_back(net->tail->neurons[i]->GetOutputFunction());
 
@@ -117,6 +120,7 @@ double BackPropagation::NetworkResult(double lastX, double lastY, NeuralNetwork*
 			parameters.push_back(0);
 		}
 		
+		net->head->neurons[i]->CalculateNeuronInputsWeights();
 		net->head->neurons[i]->CalculateNeuronOutputFunction(parameters);
 		neuronsTempResults.push_back(net->head->neurons[i]->GetOutputFunction());
 
@@ -133,6 +137,7 @@ double BackPropagation::NetworkResult(double lastX, double lastY, NeuralNetwork*
 		parameters.push_back(neuronsTempResults[0]);
 		parameters.push_back(neuronsTempResults[1]);
 
+		net->head->next->neurons[i]->CalculateNeuronInputsWeights();
 		net->head->next->neurons[i]->CalculateNeuronOutputFunction(parameters);
 		neuronsTempResults.push_back(net->head->next->neurons[i]->GetOutputFunction());
 
@@ -154,6 +159,7 @@ double BackPropagation::NetworkResult(double lastX, double lastY, NeuralNetwork*
 			count ++;
 		}
 
+		net->tail->neurons[i]->CalculateNeuronInputsWeights();
 		net->tail->neurons[i]->CalculateNeuronOutputFunction(parameters);
 		neuronsTempResults.push_back(net->tail->neurons[i]->GetOutputFunction());
 
