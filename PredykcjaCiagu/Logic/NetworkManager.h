@@ -24,6 +24,9 @@ private:
 	/** Zmienne tymczasowe na wartoœci z pliku (z klasy TXTFileReader) */
 	int temp1, temp2;
 
+	int dataSize;
+	std::vector<int> data;
+
 
 public:
 	/** Konstruktor bezargu mentowy klasy Networkmanager */

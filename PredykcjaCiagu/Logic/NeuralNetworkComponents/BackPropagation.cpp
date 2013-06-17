@@ -16,7 +16,7 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(int x, int y, NeuralNetwor
 	int i = 0;
 	int tab = 0;
 	std::vector<double> neuronsResults;
-	double firstREsult = 0;
+	double firstResult = 0;
 
 	while (i < NETWORK_ONE)
 	{
@@ -24,19 +24,21 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(int x, int y, NeuralNetwor
 
 		if (i == 0)
 		{
-			parameters[0] = x;
+			parameters.push_back(x);
 		}
 		else if (i == 1)
 		{
-			parameters[0] = y;
+			parameters.clear();
+			parameters.push_back(y);
 		}
 		else
 		{
+			parameters.clear();
 			parameters[0] = 0;
 		}
 
 		net->head->neurons[i]->CalculateNeuronOutputFunction(parameters);
-		neuronsResults[tab] = net->head->neurons[i]->GetOutputFunction();
+		neuronsResults.push_back(net->head->neurons[i]->GetOutputFunction());
 
 		i++;
 		tab++;
@@ -48,11 +50,11 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(int x, int y, NeuralNetwor
 	{
 		std::vector<double> parameters;
 
-		parameters[0] = neuronsResults[0];
-		parameters[1] = neuronsResults[1];
+		parameters.push_back(neuronsResults[0]);
+		parameters.push_back(neuronsResults[1]);
 
 		net->head->next->neurons[i]->CalculateNeuronOutputFunction(parameters);
-		neuronsResults[tab] = net->head->next->neurons[i]->GetOutputFunction();
+		neuronsResults.push_back(net->head->next->neurons[i]->GetOutputFunction());
 
 		i++;
 		tab++;
@@ -67,18 +69,18 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(int x, int y, NeuralNetwor
 
 		while (count < tab)
 		{
-			parameters[count] = neuronsResults[count];
+			parameters.push_back(neuronsResults[count]);
 			count ++;
 		}
 
 		net->tail->neurons[i]->CalculateNeuronOutputFunction(parameters);
-		neuronsResults[tab] = net->tail->neurons[i]->GetOutputFunction();
+		neuronsResults.push_back(net->tail->neurons[i]->GetOutputFunction());
 
 		i++;
 		tab++;
 	}
 
-	firstREsult = neuronsResults[tab-1];
+	firstResult = neuronsResults[tab-1];
 
 	//TODO: Algorytm do propagacji, po uzyskaniu wstêpnego wyniku 
 	
@@ -101,19 +103,21 @@ double BackPropagation::NetworkResult(int lastX, int lastY, NeuralNetwork* net)
 
 		if (i == 0)
 		{
-			parameters[0] = lastX;
+			parameters.push_back(lastX);
 		}
 		else if (i == 1)
 		{
-			parameters[0] = lastY;
+			parameters.clear();
+			parameters.push_back(lastY);
 		}
 		else
 		{
-			parameters[0] = 0;
+			parameters.clear();
+			parameters.push_back(0);
 		}
 
 		net->head->neurons[i]->CalculateNeuronOutputFunction(parameters);
-		neuronsTempResults[tab] = net->head->neurons[i]->GetOutputFunction();
+		neuronsTempResults.push_back(net->head->neurons[i]->GetOutputFunction());
 
 		i++;
 		tab++;
@@ -125,11 +129,11 @@ double BackPropagation::NetworkResult(int lastX, int lastY, NeuralNetwork* net)
 	{
 		std::vector<double> parameters;
 
-		parameters[0] = neuronsTempResults[0];
-		parameters[1] = neuronsTempResults[1];
+		parameters.push_back(neuronsTempResults[0]);
+		parameters.push_back(neuronsTempResults[1]);
 
 		net->head->next->neurons[i]->CalculateNeuronOutputFunction(parameters);
-		neuronsTempResults[tab] = net->head->next->neurons[i]->GetOutputFunction();
+		neuronsTempResults.push_back(net->head->next->neurons[i]->GetOutputFunction());
 
 		i++;
 		tab++;
@@ -144,12 +148,12 @@ double BackPropagation::NetworkResult(int lastX, int lastY, NeuralNetwork* net)
 
 		while (count < tab)
 		{
-			parameters[count] = neuronsTempResults[count];
+			parameters.push_back(neuronsTempResults[count]);
 			count ++;
 		}
 
 		net->tail->neurons[i]->CalculateNeuronOutputFunction(parameters);
-		neuronsTempResults[tab] = net->tail->neurons[i]->GetOutputFunction();
+		neuronsTempResults.push_back(net->tail->neurons[i]->GetOutputFunction());
 
 		i++;
 		tab++;

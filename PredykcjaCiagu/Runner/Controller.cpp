@@ -23,5 +23,5 @@ void Controller::Run()
 {
 	gui->PrintApplicationMenu();
 	consoleMenuListener->ListenForKey(gui->GetNumberOfMenuOptions());
-
+	network->RunNetwork();
 }
