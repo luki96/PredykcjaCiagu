@@ -22,6 +22,22 @@ Controller::~Controller(void)
 void Controller::Run()
 {
 	gui->PrintApplicationMenu();
-	consoleMenuListener->ListenForKey(gui->GetNumberOfMenuOptions());
-	network->RunNetwork();
+	int result = consoleMenuListener->ListenForKey(gui->GetNumberOfMenuOptions());
+
+	switch(result)
+	{
+		case 0:
+			{
+				exit(0);
+				break;
+			}
+		case 1:
+			{
+				this->fileManager->ireader->ReadFile("a.txt");
+				this->dataConverter->ConvertDataToSigmoidFunctionRange(this->fileManager->ireader->GetData());
+				this->network->RunNetwork();
+			}
+		default:
+			break;
+	}
 }
