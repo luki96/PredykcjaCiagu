@@ -14,21 +14,32 @@ class NetworkManager
 private:
 	/** Zmienna wskaünikowa wskazujπca obiekt NeuralNetwork*/
 	NeuralNetwork* network;
+
 	/** Wkaünijk na obiekt, typu interfejsu IPropagable */
 	IPropagable* propagation;
+
 	/** Obiekt Interfejsu IRedable, reprezentujacy klase TXTFileReader */
 	IReadable* reader;
+
+	/** Wskaünik na obiekt klasy odpowiadajπcy za konwertowanie danych do przedzialu <0,1) */ 
+	DataConverter* converter;
+
 	/** Zmienne odpowiadajπce za liczbÍ neuronÛw w kolejnych watstwach sieci */
 	static const int FIRST_NETWORK = 2, SECOND_NETWORK = 5, THIRD_NETWORK = 1;
+
 	/** Zmienna odpowiedzialna za liczbe warst sieci neuronowej */
 	static const int NETWORK_LAYERS = 3; 
+
 	/** Zmienne tymczasowe na wartoúci z pliku (z klasy TXTFileReader) */
 	double temp1, temp2;
 
-	DataConverter* converter;
-
+	/** Zmienna przechowujπca wielkoúÊ tablicy, danych wprowadzonych przez uøytkownika */ 
 	int dataSize;
+
+	/** Tablica danych wprowadzonych przez uzytkownika */ 
 	std::vector<int> data;
+
+	/** Skonwertowana tablica danych */ 
 	std::vector<double> convertedData;
 
 
