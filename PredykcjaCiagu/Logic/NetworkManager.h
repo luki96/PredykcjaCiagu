@@ -42,7 +42,8 @@ public:
 	/** Metoda ucz¹ca sieæ neuronow¹ */
 	void TeachNetwork();
 
-	/** Metoda licz¹ca odpowiedŸ sieci */
+	/** Metoda licz¹ca odpowiedŸ sieci 
+	@retun result -> wynik obliczeñ sieci, przekazywany do nadrzêdnych metod*/
 	double Calculate();
 
 	/** Metoda uruchamiaj¹ca sieæ i zwracaj¹ca wynik 
