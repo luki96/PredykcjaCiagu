@@ -94,6 +94,7 @@ double NetworkManager::RunNetwork()
 	{
 		result = Calculate();
 	}
+	finalyNetworkResult = result;
 	return result;
 }
 

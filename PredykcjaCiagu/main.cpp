@@ -41,6 +41,9 @@ n->CalculateNeuronOutputFunction(dc->GetConvertedData());
 NetworkManager* network = new NetworkManager();
 
 network -> RunNetwork();
+double result = network->GetFinalResult();
+
+cout << "Kolejnym przewidywanym elementem ciagu liczbowego jest: " << result << endl;
 
 
 //NeuralNetwork* nn = new NeuralNetwork(1, 2, 5);

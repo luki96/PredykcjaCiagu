@@ -42,6 +42,8 @@ private:
 	/** Skonwertowana tablica danych */ 
 	std::vector<double> convertedData;
 
+	/** Zmienna przechowuj¹ca ostateczny wynik z dzia³ania sieci */
+	double finalyNetworkResult;
 
 public:
 	/** Konstruktor bezargu mentowy klasy Networkmanager */
@@ -68,5 +70,10 @@ public:
 	@return Wynik -> wynik obliczeñ sieci */
 	double RunNetwork();
 
+	/** Getter do finalNetworkResult */ 
+	double GetFinalResult()
+	{
+		return finalyNetworkResult;
+	}
 };
 
