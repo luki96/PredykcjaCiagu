@@ -7,6 +7,7 @@ Neuron::Neuron(int numberOfNeuronInputs) : LOWER_LIMIT_WEIGHTS_RANGE(-0.5),
 	srand (time(NULL));
 	this->numberOfNeuronInputs = numberOfNeuronInputs;
 	this->outputFunction = 0.0;
+	this->weight = 0.0;
 }
 
 Neuron::~Neuron(void)
@@ -23,7 +24,7 @@ bool Neuron::CalculateNeuronInputsWeights()
 	{
 		for (int i = 0; i < numberOfNeuronInputs; i++)
 		{
-			double weight = (UPPER_LIMIT_WEIGHTS_RANGE - LOWER_LIMIT_WEIGHTS_RANGE) 
+			weight = (UPPER_LIMIT_WEIGHTS_RANGE - LOWER_LIMIT_WEIGHTS_RANGE) 
 				* ((double)rand() / RAND_MAX) + LOWER_LIMIT_WEIGHTS_RANGE;
 			weightsOfNeuronInputs.push_back(weight);
 		}

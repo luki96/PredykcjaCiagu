@@ -17,6 +17,9 @@ private:
 	/** Ilosc wejsc w neuronie */
 	int numberOfNeuronInputs;
 
+	/** Wylosowana waga wejscia dla neuronu */
+	double weight;
+
 	/** Wartosc funkcji wyjscia z neuronu czyli suma kazdego z wejsc razy odpowiednia waga przypisana temu wejsciu */
 	double outputFunction;
 
@@ -31,12 +34,43 @@ public:
 	/** Destruktor klasy Neuron */
 	~Neuron(void);
 
+	/** Getter dla pola LOWER_LIMIT_WEIGHTS_RANGE 
+	@return Wartosc dolengo ograniczenia przedzialu dla wag
+	*/
+	const double GetLowerLimitWeightsRange()
+	{
+		return this->LOWER_LIMIT_WEIGHTS_RANGE;
+	}
+
+	/** Getter dla pola UPPER_LIMIT_WEIGHTS_RANGE 
+	@return Wartosc gornego ograniczenia przedzialu dla wag
+	*/
+	const double GetUpperLimitWeightsRange()
+	{
+		return this->UPPER_LIMIT_WEIGHTS_RANGE;
+	}
+	
 	/** Getter dla pola outputFunction 
 	@return Wartosc funkcji wyjscia z neuronu
 	*/
 	double GetOutputFunction()
 	{
-		return outputFunction;
+		return this->outputFunction;
+	}
+
+	/** Getter dla pola weight 
+	@return Wartosc wylosowanej wagi dla 
+	*/
+	double GetWeight()
+	{
+		return this->weight;
+	}
+
+	/** Setter dla pola weight 
+	@param Nowa wartosc wagi*/
+	void SetWeight(double weight)
+	{
+		this->weight = weight;
 	}
 	
 	/** Metoda oblicza wagi dla kazdego z wejsc pojedynczego neuronu 
