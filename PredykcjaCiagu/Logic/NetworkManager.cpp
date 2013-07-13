@@ -8,7 +8,6 @@ NetworkManager::NetworkManager(void)
 	propagation = new BackPropagation(); 
 	reader = new TxtFileReader();
 	temp1 = temp2 = 0;
-	converter = new DataConverter();
 
 	reader->ReadFile("a.txt");
 }
@@ -52,8 +51,8 @@ void NetworkManager::TeachNetwork()
 
 	data.swap(reader->GetData());
 	dataSize = data.size();
-	converter->ConvertDataToSigmoidFunctionRange(data);
-	convertedData.swap(converter->GetConvertedData());
+//	converter->ConvertDataToSigmoidFunctionRange(data);
+	convertedData.swap(data);
 
 
 	if (dataSize >= 3)

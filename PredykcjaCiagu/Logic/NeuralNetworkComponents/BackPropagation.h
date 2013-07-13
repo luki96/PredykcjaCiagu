@@ -4,7 +4,6 @@
 #include "..\..\Interfaces\IPropagable.h"
 #include <iostream>
 #include <math.h>
-#include "..\..\Logic\DataConverter.h"
 
 using namespace std;
 
@@ -16,10 +15,10 @@ class BackPropagation: public IPropagable
 private:
 
 	/** Wspó³czynnik uczenia sieci */ 
-	 double factor;
+	 double eta;
 
-	 /** Obiekt do konwersji danych */
-	 DataConverter* converter; 
+	 /** Maksymalny dopuszczalny b³¹d */ 
+	 double ERROR; 
 
 public:
 	/** Konstruktor bezargumentowy klasy BackPropagation */ 
@@ -33,6 +32,9 @@ public:
 
 	/** Wirtualna metoda z interfejsu IPropagable, pozwalaj¹ca na uzyskanie wyników z sieci neuronowej */
 	 virtual double NetworkResult(double, double, NeuralNetwork* );
+
+	 /** Obliczenie b³êdu z neuronu wyjœciowego (b³¹d: (|Wartoœæ oczekiwana - Wartoœæ otrzymana|) */
+	 double CalculateOutputNeuronAnswearError(double networkAnswear, double expectedAnswear);
 
 };
 

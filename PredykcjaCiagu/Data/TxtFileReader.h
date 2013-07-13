@@ -10,7 +10,7 @@ class TxtFileReader : public IReadable
 private:
 
 	/** Tablica w ktorej bedzie zapisana zawartosc wczytywanego pliku */
-	std::vector<int> data;
+	std::vector<double> data;
 
 	/** Zmienna plikowa */
 	std::fstream file;
@@ -33,7 +33,7 @@ public:
 	/** Implementacja gettera dla pola data z interfejsu IReadable
 	@return tablica zawierajaca wczytany plik z dysku
 	*/
-	std::vector<int> GetData()
+	std::vector<double> GetData()
 	{
 		return data;
 	}

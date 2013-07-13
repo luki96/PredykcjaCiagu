@@ -29,6 +29,9 @@ private:
 	/** Tablica zawierajaca wage kazedego wejscia neuronu */
 	std::vector<double> weightsOfNeuronInputs;
 
+	/** Gradient klasy neuron */ 
+	double gradient;
+
 public:
 
 	/** Konstruktor klasy Neuron przyjmujacy jako argument ilosc wejsc pojedynczego neuronu */
@@ -59,6 +62,30 @@ public:
 	{
 		this->weightsOfNeuronInputs.clear();
 		this->weightsOfNeuronInputs.swap(weights);
+	}
+
+	/** Getter do zmiennej gradient */ 
+	double GetGradient()
+	{
+		return this->gradient;
+	}
+
+	/** Setter do zmiennej gradient */ 
+	void SetGradient(double tGradient)
+	{
+		this->gradient = tGradient;
+	}
+
+	/** Getter do zmiennej bias */
+	double GetBias()
+	{
+		return bias;
+	}
+
+	/** Setter do zmiennej bias */
+	void  SetBias(double tBias)
+	{
+		this->bias = tBias;
 	}
 	
 	/** Metoda oblicza wagi dla kazdego z wejsc pojedynczego neuronu 

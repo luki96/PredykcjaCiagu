@@ -23,6 +23,6 @@ public:
 	/** Czysto wirtualny getter dla tablicy, w ktorej znajduje sie wczytany plik
 	@return std::vector<int> tablica zawierajaca zawartosc wczytanego pliku
 	*/
-	virtual std::vector<int> GetData() = 0;
+	virtual std::vector<double> GetData() = 0;
 
 };

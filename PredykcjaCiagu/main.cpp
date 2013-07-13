@@ -7,7 +7,6 @@
 #include "Runner\Runner.h"
 #include "Interfaces\IReadable.h"
 #include "Logic\NeuralNetworkComponents\NeuralNetwork.h"
-#include "Logic\DataConverter.h"
 #include "Logic\FileManager.h"
 #include "Data\TxtFileReader.h"
 #include "Logic\NetworkManager.h"

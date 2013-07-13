@@ -8,6 +8,7 @@ Neuron::Neuron(int numberOfNeuronInputs) : LOWER_LIMIT_WEIGHTS_RANGE(-0.5),
 	this->numberOfNeuronInputs = numberOfNeuronInputs;
 	this->outputFunction = 0.0;
 	this->weight = 0.0;
+	bias = ((rand()%11) - 5) / 10;
 }
 
 Neuron::~Neuron(void)
@@ -37,6 +38,7 @@ void Neuron::CalculateNeuronOutputFunction(vector<double> neuronInputData)
 {
 	for (int i = 0; i < numberOfNeuronInputs; i++)
 	{
-		this->outputFunction += (neuronInputData[i] * this->weightsOfNeuronInputs[i]); // TODO: tutaj doda³bym bias
+		this->outputFunction +=( (neuronInputData[i] * this->weightsOfNeuronInputs[i]) + bias );
 	}
+		this->outputFunction = 1/(1 + exp(-(this->outputFunction)));
 }

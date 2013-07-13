@@ -4,7 +4,6 @@
 #include "NeuralNetworkComponents\BackPropagation.h"
 #include "..\Data\TxtFileReader.h"
 #include "..\Interfaces\IReadable.h"
-#include "..\Logic\DataConverter.h"
 #include <vector>
 #include <iostream>
 
@@ -21,9 +20,6 @@ private:
 	/** Obiekt Interfejsu IRedable, reprezentujacy klase TXTFileReader */
 	IReadable* reader;
 
-	/** Wskaünik na obiekt klasy odpowiadajπcy za konwertowanie danych do przedzialu <0,1) */ 
-	DataConverter* converter;
-
 	/** Zmienne odpowiadajπce za liczbÍ neuronÛw w kolejnych watstwach sieci */
 	static const int FIRST_NETWORK = 2, SECOND_NETWORK = 5, THIRD_NETWORK = 1;
 
@@ -37,7 +33,7 @@ private:
 	int dataSize;
 
 	/** Tablica danych wprowadzonych przez uzytkownika */ 
-	std::vector<int> data;
+	std::vector<double> data;
 
 	/** Skonwertowana tablica danych */ 
 	std::vector<double> convertedData;

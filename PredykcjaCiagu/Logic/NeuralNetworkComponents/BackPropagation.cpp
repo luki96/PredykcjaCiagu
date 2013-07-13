@@ -3,8 +3,8 @@
 
 BackPropagation::BackPropagation(void)
 {
-	factor = 0.9;
-	converter = new DataConverter();
+	eta = 0.5;
+	ERROR = 0.8;
 }
 
 
@@ -17,8 +17,11 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 	int NETWORK_ONE = 2, NETWORK_TWO = 5, NETWORK_THREE = 1;
 	int i = 0;
 	int tab = 0;
-	double toConvert = 0, afterConversion = 0;
+	double one = 1;
+	double afterConversion = 0;
 	std::vector<double> neuronsResults;
+	std::vector<double> neutralizeWeights; // tablica do ustawienia wag neuronów wejœciowych na wart. = 1 
+
 	double firstResult = 0;
 
 	while (i < NETWORK_ONE)
@@ -39,17 +42,16 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 			parameters.clear();
 			parameters[0] = 0;
 		}
+		
+		neutralizeWeights.push_back(1);		// ustawienie wag neuronów wejœciowych na wart. = 1 
+		net->head->neurons[i]->SetWeight(neutralizeWeights);  // jak wy¿ej 
+		net->head->neurons[i]->SetBias(one); // j/w 
 
-		net->head->neurons[i]->CalculateNeuronInputsWeights();
 		net->head->neurons[i]->CalculateNeuronOutputFunction(parameters);
 		
-		// ew. proponowana zmiana 
-		toConvert = net->head->neurons[i]->GetOutputFunction();
-		toConvert *= 1000; // cofniecie konwersji po wczytaniu z pliku 
-		afterConversion = converter->ConvertData(toConvert);
-
+		afterConversion = net->head->neurons[i]->GetOutputFunction();
 		neuronsResults.push_back(afterConversion);
-		//
+
 		i++;
 		tab++;
 	}
@@ -65,7 +67,9 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 
 		net->head->next->neurons[i]->CalculateNeuronInputsWeights();
 		net->head->next->neurons[i]->CalculateNeuronOutputFunction(parameters);
-		neuronsResults.push_back(net->head->next->neurons[i]->GetOutputFunction());
+		
+		afterConversion = net->head->next->neurons[i]->GetOutputFunction();
+		neuronsResults.push_back(afterConversion);
 
 		i++;
 		tab++;
@@ -87,7 +91,9 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 
 		net->tail->neurons[i]->CalculateNeuronInputsWeights();
 		net->tail->neurons[i]->CalculateNeuronOutputFunction(parameters);
-		neuronsResults.push_back(net->tail->neurons[i]->GetOutputFunction());
+		
+		afterConversion = net->tail->neurons[i]->GetOutputFunction(); 
+		neuronsResults.push_back(afterConversion);
 
 		i++;
 		tab++;
@@ -99,88 +105,14 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 
 	//TODO: Algorytm do propagacji, po uzyskaniu wstêpnego wyniku 
 
-	//
-	double sum = 0, blad = 0, tmp1 = 0, tmp2 = 0, waga = 0;
-
-	std::vector<double> wagi;
-	std::vector<double> zmiana;
-	wagi.clear();
-	zmiana.clear();
-
-	tmp1 = net->tail->neurons[i]->GetOutputFunction();
-
-
-
-		blad = (pow((z - tmp1), 2))/2;
-		blad = blad/5;
-
-		wagi.swap(net->tail->neurons[i]->GetWeight());
-
-		int j = 0;
-
-		while( j < wagi.size())
-		{
-			if (blad > 0)
-			{
-				zmiana.push_back(wagi[i] + ( factor));
-			}
-			else if (blad < 0)
-			{
-				zmiana.push_back(wagi[i] - ( factor));
-			}
-			j++;
-		}
-
-		net->tail->neurons[i]->SetWeight(zmiana);
-
-		i = 0;
-		j = 0;
-
-		while (i < NETWORK_ONE)
-		{
-			tmp1 = z - net->head->next->neurons[i]->GetOutputFunction();
-			blad = (pow((z - tmp1), 2))/2;
-			blad = blad/2;
-
-			wagi.clear();
-			zmiana.clear();
-
-			wagi.swap(net->head->next->neurons[i]->GetWeight());
-
-		j = 0;
-
-		while( j < wagi.size())
-		{
-			if (blad > 0)
-			{
-				zmiana.push_back(wagi[i] + ( factor));
-			}
-			else if (blad < 0)
-			{
-				zmiana.push_back(wagi[i] - ( factor));
-			}
-			j++;
-		}
-
-		net->head->next->neurons[i]->SetWeight(zmiana);
+	while (i <  NETWORK_THREE) 
+	{
 
 		i++;
+	}
 
-		}
+	i = 0;
 
-		i = 0;
-		j = 0;
-	
-
-
-	//cout << firstResult<<endl;
-
-
-	
-	
-
-	//
-	
 	return net;
 }
 
@@ -193,6 +125,8 @@ double BackPropagation::NetworkResult(double lastX, double lastY, NeuralNetwork*
 	int i = 0;
 	std::vector<double> neuronsTempResults;
  	int tab = 0;
+	double one = 1;
+	std::vector<double> neutralizeWeights; // tablica do ustawienia wag neuronów wejœciowych na wart. = 1 
 
 	while (i < NETWORK_ONE)
 	{
@@ -213,7 +147,10 @@ double BackPropagation::NetworkResult(double lastX, double lastY, NeuralNetwork*
 			parameters.push_back(0);
 		}
 		
-		net->head->neurons[i]->CalculateNeuronInputsWeights();
+		neutralizeWeights.push_back(1);		// ustawienie wag neuronów wejœciowych na wart. = 1 
+		net->head->neurons[i]->SetWeight(neutralizeWeights);  // jak wy¿ej 
+		net->head->neurons[i]->SetBias(one); // j/w 
+
 		net->head->neurons[i]->CalculateNeuronOutputFunction(parameters);
 		neuronsTempResults.push_back(net->head->neurons[i]->GetOutputFunction());
 
@@ -263,4 +200,14 @@ double BackPropagation::NetworkResult(double lastX, double lastY, NeuralNetwork*
 	finalNetResult = neuronsTempResults[tab-1];
 
 	return finalNetResult; 
+}
+
+
+double BackPropagation::CalculateOutputNeuronAnswearError(double networkAnswear, double expectedAnswear)
+{
+	double outputError = 0;
+
+	outputError = abs(expectedAnswear - networkAnswear);
+
+	return outputError; 
 }

@@ -1,7 +1,6 @@
 #pragma once
 #include "..\UI\GUI.h"
 #include "..\Logic\ConsoleMenuListener.h"
-#include "..\Logic\DataConverter.h"
 #include "..\Logic\FileManager.h"
 #include "..\Logic\NetworkManager.h"
 
@@ -15,9 +14,6 @@ private:
 
 	/** Prywatny wskaznik do obiektu klasy ConsoleMenuListener */
 	ConsoleMenuListener* consoleMenuListener;
-
-	/** Prywatny wskaznik do obiektu klasy DataConverter */
-	DataConverter* dataConverter;
 
 	/** Prywatny wskaznik do obiektu klasy FileManager */
 	FileManager* fileManager;
