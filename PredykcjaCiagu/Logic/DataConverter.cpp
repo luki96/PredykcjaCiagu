@@ -10,6 +10,8 @@ DataConverter::~DataConverter(void)
 {
 }
 
+
+
 void DataConverter::ConvertDataToSigmoidFunctionRange(std::vector<int> data)
 {
 	unsigned int size = data.size();
@@ -19,4 +21,12 @@ void DataConverter::ConvertDataToSigmoidFunctionRange(std::vector<int> data)
 		tmpData /= this->DIVISIOR;
 		this->convertedData.push_back(tmpData); 
 	}
+}
+
+
+double DataConverter::ConvertData(double data)
+{
+	data = 1/(1 + exp(-(data)));
+
+	return data;
 }

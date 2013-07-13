@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <math.h>
 
 class DataConverter
 {
@@ -21,7 +22,13 @@ public:
 	/** Metoda konwertuje dane do przedzialu funkcji sigmoidalnej czyli (0;1> 
 	@param std::vector<int> data Tablica z danymi, ktore maja zostac przeskalowane
 	*/
+	
 	void ConvertDataToSigmoidFunctionRange(std::vector<int> data);
+
+	/** Metoda konwerstujaca dane wedlug wzoru 1/(1+exp(-(data))) 
+	@pparam data - dana do modyfikacji
+	*/
+	double ConvertData(double data);
 
 	/** Getter dla pola convertedData
 	@return tablica zawierajaca dane skonwertowane do przedzialu funkcji sigmoidalnej

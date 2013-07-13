@@ -56,13 +56,14 @@ void NetworkManager::TeachNetwork()
 	convertedData.swap(converter->GetConvertedData());
 
 
-	if (dataSize >= 2)
+	if (dataSize >= 3)
 	{
 		while ((i+2) < dataSize)
 		{
 			temp1 = convertedData[i];
 			temp2 = convertedData[i+1];
-			network = propagation->BackPropagationMethod(temp1, temp2, network);
+			temp3 = convertedData[i+2];
+			network = propagation->BackPropagationMethod(temp1, temp2, temp3, network);
 			i++;
 		}
 		// przygotowanie danych do metody Calculate (by tam ponownie nie iterowaæ po tablicy)
@@ -73,6 +74,7 @@ void NetworkManager::TeachNetwork()
 	{
 		std::cout << "Wprowadzono zbyt ma³o danych, aby sieæ mog³a zadzia³aæ." << std::endl;
 	}
+
 }
 
 double NetworkManager::Calculate()

@@ -31,7 +31,7 @@ private:
 	static const int NETWORK_LAYERS = 3; 
 
 	/** Zmienne tymczasowe na wartoœci z pliku (z klasy TXTFileReader) */
-	double temp1, temp2;
+	double temp1, temp2, temp3;
 
 	/** Zmienna przechowuj¹ca wielkoœæ tablicy, danych wprowadzonych przez u¿ytkownika */ 
 	int dataSize;
