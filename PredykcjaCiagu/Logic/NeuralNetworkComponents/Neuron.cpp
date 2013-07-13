@@ -8,7 +8,7 @@ Neuron::Neuron(int numberOfNeuronInputs) : LOWER_LIMIT_WEIGHTS_RANGE(-0.5),
 	this->numberOfNeuronInputs = numberOfNeuronInputs;
 	this->outputFunction = 0.0;
 	this->weight = 0.0;
-	bias = ((rand()%11) - 5) / 10;
+	bias = ((rand()%11) - 5)/10;
 }
 
 Neuron::~Neuron(void)

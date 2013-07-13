@@ -87,6 +87,18 @@ public:
 	{
 		this->bias = tBias;
 	}
+
+	/** Getter do pojedynczej wagi neurona */
+	double GetOneWeight(double whichInput)
+	{
+		return weightsOfNeuronInputs[whichInput];
+	}
+
+	/** Setter do pojedynczej wagi neurona */
+	void SetOneWeight(double whichInput, double tWeight)
+	{
+		weightsOfNeuronInputs[whichInput] = tWeight;
+	}
 	
 	/** Metoda oblicza wagi dla kazdego z wejsc pojedynczego neuronu 
 	@return true gdy uda sie obliczyc wagi dla wszystkich wejsc neuronu.

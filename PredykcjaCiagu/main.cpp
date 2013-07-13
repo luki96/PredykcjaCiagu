@@ -41,7 +41,7 @@ NetworkManager* network = new NetworkManager();
 
 network -> RunNetwork();
 double result = network->GetFinalResult();
-
+//result = log (result / (1 -result));
 cout << "Kolejnym przewidywanym elementem ciagu liczbowego jest: " << result << endl;
 
 
