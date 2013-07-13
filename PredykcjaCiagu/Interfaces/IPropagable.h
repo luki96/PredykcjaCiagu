@@ -21,5 +21,6 @@ public:
 	/** Czysto wirtualna metoda, do wykonania ostatnich obliczeñ, na siecii */
 	virtual double NetworkResult(double, double, NeuralNetwork* ) = 0;
 
+	virtual double qwerty() = 0;
 };
 

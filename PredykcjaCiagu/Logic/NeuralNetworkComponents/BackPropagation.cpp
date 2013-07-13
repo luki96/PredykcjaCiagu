@@ -228,9 +228,11 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 	iterator = 0;
 
 	double finalResult = net->tail->neurons[i]->GetOutputFunction();
+	
+	xyz = finalResult;
 	//finalResult = log(finalResult/(1-finalResult));
-
-	//cout << finalResult << endl;  
+	
+	//cout << finalResult << "   " << z << endl;;  
 
 	return net;
 }
@@ -329,4 +331,9 @@ double BackPropagation::CalculateOutputNeuronAnswearError(double expectedAnswear
 	outputError = abs(expectedAnswear - networkAnswear);
 
 	return outputError; 
+}
+
+double BackPropagation::qwerty()
+{
+	return xyz;
 }

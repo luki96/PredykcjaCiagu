@@ -21,6 +21,8 @@ private:
 	 double ERROR; 
 
 public:
+	double xyz;
+
 	/** Konstruktor bezargumentowy klasy BackPropagation */ 
 	BackPropagation(void);
 
@@ -35,6 +37,8 @@ public:
 
 	 /** Obliczenie b³êdu z neuronu wyjœciowego (b³¹d: (|Wartoœæ oczekiwana - Wartoœæ otrzymana|) */
 	 double CalculateOutputNeuronAnswearError(double networkAnswear, double expectedAnswear);
+
+	 double qwerty();
 
 };
 
