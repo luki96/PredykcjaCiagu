@@ -22,5 +22,7 @@ public:
 	virtual double NetworkResult(double, double, NeuralNetwork* ) = 0;
 
 	virtual double qwerty() = 0;
+
+	virtual double asdf() = 0;
 };
 

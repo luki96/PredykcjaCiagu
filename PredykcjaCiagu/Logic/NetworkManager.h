@@ -42,7 +42,7 @@ private:
 	double finalyNetworkResult;
 
 public:
-	double test;
+	double test, zapamietajBlad, p1;
 
 	/** Konstruktor bezargu mentowy klasy Networkmanager */
 	NetworkManager(void);

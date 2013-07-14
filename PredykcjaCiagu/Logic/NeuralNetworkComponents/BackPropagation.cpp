@@ -3,8 +3,8 @@
 
 BackPropagation::BackPropagation(void)
 {
-	eta = 0.5;
-	ERROR = 0.001;
+	eta = 0.3; // by³o 0.9
+	ERROR = 0.0000001;
 }
 
 
@@ -26,7 +26,7 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 	std::vector<double> neuronsResults;
 	std::vector<double> neutralizeWeights; // tablica do ustawienia wag neuronów wejœciowych na wart. = 1 
 
-	destinationValue = 1/(1 + exp(-(destinationValue))); // konwersja destinationValues do przedzialu {0,1}
+	destinationValue = destinationValue/1000;//1/(1 + exp(-(destinationValue))); // konwersja destinationValues do przedzialu {0,1}
 	double firstResult = 0;
 
 	while (i < NETWORK_ONE)
@@ -111,6 +111,8 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 	i = 0;
 
 	// Back propagation 
+	iterator = 0;
+
 	//while((iterator < 25) && (propagationAnswear > ERROR))
 	{
 
@@ -221,6 +223,9 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 
 		propagationAnswear = CalculateOutputNeuronAnswearError(destinationValue, net->tail->neurons[i]->GetOutputFunction());
 
+		//
+		bledy = propagationAnswear;
+		//
 		iterator++;
 
 	} // end of weight update 
@@ -232,6 +237,8 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 	xyz = finalResult;
 	//finalResult = log(finalResult/(1-finalResult));
 	
+	//finalResult = -log(1/finalResult - 1);
+
 	//cout << finalResult << "   " << z << endl;;  
 
 	return net;
@@ -336,4 +343,9 @@ double BackPropagation::CalculateOutputNeuronAnswearError(double expectedAnswear
 double BackPropagation::qwerty()
 {
 	return xyz;
+}
+
+double BackPropagation::asdf()
+{
+	return bledy;
 }

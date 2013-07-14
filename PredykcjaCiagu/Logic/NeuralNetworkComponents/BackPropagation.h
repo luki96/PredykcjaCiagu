@@ -23,6 +23,8 @@ private:
 public:
 	double xyz;
 
+	double bledy;
+
 	/** Konstruktor bezargumentowy klasy BackPropagation */ 
 	BackPropagation(void);
 
@@ -39,6 +41,8 @@ public:
 	 double CalculateOutputNeuronAnswearError(double networkAnswear, double expectedAnswear);
 
 	 double qwerty();
+
+	 double asdf();
 
 };
 

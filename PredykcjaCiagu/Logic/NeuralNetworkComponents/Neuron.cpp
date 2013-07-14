@@ -40,5 +40,5 @@ void Neuron::CalculateNeuronOutputFunction(vector<double> neuronInputData)
 	{
 		this->outputFunction +=( (neuronInputData[i] * this->weightsOfNeuronInputs[i]) + bias );
 	}
-		this->outputFunction = 1/(1 + exp(-(this->outputFunction)));
+		this->outputFunction = outputFunction/1000;// 1/(1 + exp(-(this->outputFunction)));
 }

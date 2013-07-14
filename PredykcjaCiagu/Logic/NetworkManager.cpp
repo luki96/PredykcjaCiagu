@@ -62,9 +62,11 @@ void NetworkManager::TeachNetwork()
 			temp1 = convertedData[i];
 			temp2 = convertedData[i+1];
 			temp3 = convertedData[i+2];
+			p1 = temp3;
 			network = propagation->BackPropagationMethod(temp1, temp2, temp3, network);
 			i++;
 			test = propagation->qwerty();
+			zapamietajBlad = propagation->asdf();
 		}
 		// przygotowanie danych do metody Calculate (by tam ponownie nie iterowaæ po tablicy)
 		temp1 = convertedData[i];
@@ -99,8 +101,15 @@ double NetworkManager::RunNetwork()
 	finalyNetworkResult = result;
 
 	//
-	double zlicz = (temp2 * finalyNetworkResult)/test;
+	double zlicz = (p1 * finalyNetworkResult)/test;
 	cout << "zliczone: " << zlicz << endl;
+
+	cout << endl;
+
+	//double wyswietL = (p1 * zapamietajBlad)/test;
+	//cout << "blad:"<< wyswietL <<endl;
+
+	cout << "blad wynosi" << zapamietajBlad << endl;
 	//
 
 
