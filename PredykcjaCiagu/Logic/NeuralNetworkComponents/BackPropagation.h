@@ -8,7 +8,7 @@
 using namespace std;
 
 /** Klasa dziedzicz¹ca interfejs IPropagable
-	s³u¿¹ca do wykonania propagacji wstecznej */ 
+	s³u¿¹ca do wykonania wstecznej propagacji */
 class BackPropagation: public IPropagable
 {
 
@@ -21,9 +21,8 @@ private:
 	 double ERROR; 
 
 public:
-	double xyz;
-
-	double bledy;
+	/** Wynik koncowy */ 
+	double endResult;
 
 	/** Konstruktor bezargumentowy klasy BackPropagation */ 
 	BackPropagation(void);
@@ -40,9 +39,11 @@ public:
 	 /** Obliczenie b³êdu z neuronu wyjœciowego (b³¹d: (|Wartoœæ oczekiwana - Wartoœæ otrzymana|) */
 	 double CalculateOutputNeuronAnswearError(double networkAnswear, double expectedAnswear);
 
-	 double qwerty();
-
-	 double asdf();
+	 /** Geeter do zmiennej endResult */ 
+	 double GetEndResult()
+	 {
+		 return endResult;
+	 }
 
 };
 

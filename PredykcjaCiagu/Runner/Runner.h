@@ -1,6 +1,7 @@
 #pragma once
 #include "Controller.h"
 
+/** Nadrzêdna klasa uruchomieniowo / menad¿erska */
 class Runner
 {
 private:

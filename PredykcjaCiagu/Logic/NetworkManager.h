@@ -6,11 +6,17 @@
 #include "..\Interfaces\IReadable.h"
 #include <vector>
 #include <iostream>
+#include <string>
+#include "..\Interfaces\IWritable.h"
+#include "..\Data\TxtFileWriter.h"
 
 /** Klasa menad¿erska s³u¿¹ca do obs³ugi sieci neuronowej */
 class NetworkManager
 {
 private:
+	/** Tablica przechowuj¹ca sugerowane wyniki */
+	std::vector<double> tabWynik;
+
 	/** Zmienna wskaŸnikowa wskazuj¹ca obiekt NeuralNetwork*/
 	NeuralNetwork* network;
 
@@ -19,6 +25,9 @@ private:
 
 	/** Obiekt Interfejsu IRedable, reprezentujacy klase TXTFileReader */
 	IReadable* reader;
+
+	/** Obiekt Interfejsu IWritable, reprezentujacy klase TxtFileWriter */
+	IWritable* writer;
 
 	/** Zmienne odpowiadaj¹ce za liczbê neuronów w kolejnych watstwach sieci */
 	static const int FIRST_NETWORK = 2, SECOND_NETWORK = 5, THIRD_NETWORK = 1;
@@ -42,6 +51,7 @@ private:
 	double finalyNetworkResult;
 
 public:
+	/** zmienne pomocnicze */ 
 	double test, zapamietajBlad, p1;
 
 	/** Konstruktor bezargu mentowy klasy Networkmanager */
@@ -67,6 +77,9 @@ public:
 	/** Metoda uruchamiaj¹ca sieæ i zwracaj¹ca wynik 
 	@return Wynik -> wynik obliczeñ sieci */
 	double RunNetwork();
+
+	/** Metoda s³u¿¹ca do eksportu wyników do pliku */
+	void SaveToFile(std::string fName, std::vector<double> data);
 
 	/** Getter do finalNetworkResult */ 
 	double GetFinalResult()

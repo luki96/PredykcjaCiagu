@@ -13,6 +13,7 @@
 
 using namespace std;
 
+/** G³ówna klasa programu */
 int main (int argc, char* argv[])
 {
 //Runner* runner = new Runner;
@@ -54,6 +55,7 @@ cout << "Kolejnym przewidywanym elementem ciagu liczbowego jest: " << result << 
 //delete nn;
 //delete dc;
 //delete fm;
+delete network;
 _CrtDumpMemoryLeaks();
 system("pause");
 return 0;

@@ -26,7 +26,7 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 	std::vector<double> neuronsResults;
 	std::vector<double> neutralizeWeights; // tablica do ustawienia wag neuronów wejœciowych na wart. = 1 
 
-	destinationValue = destinationValue/1000;//1/(1 + exp(-(destinationValue))); // konwersja destinationValues do przedzialu {0,1}
+	destinationValue = destinationValue/(1000);//1/(1 + exp(-(destinationValue))); // konwersja destinationValues do przedzialu {0,1}
 	double firstResult = 0;
 
 	while (i < NETWORK_ONE)
@@ -118,7 +118,7 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 
 		
 
-		// 1 Compute output gradients 
+		//Compute output gradients 
 		while (i <  NETWORK_THREE) 
 		{
 			double networkAnswear = net->tail->neurons[i]->GetOutputFunction();
@@ -131,13 +131,13 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 		derivative = 0;
 		i = 0;
 
-		// 2 Compute hidden gradients
+		//Compute hidden gradients
 		while (i < NETWORK_TWO)
 		{
 			double hiddenAnswear = net->head->next->neurons[i]->GetOutputFunction(); 
 			double sum = 0;
 			int ZERO = 0;
-			int j = 0;
+			unsigned int j = 0;
 			std::vector<double> numbOfInputs;
 
 			derivative = ( 1 - hiddenAnswear) * hiddenAnswear;
@@ -159,7 +159,7 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 
 		i = 0;
 
-		//3 Update hidden neuron weights
+		//Update hidden neuron weights
 		while (i < (net->head->neurons.size())) // iteracja po iloœci wejœc  w neuronach warstwy ukrytej 
 		{
 			int j = 0;
@@ -177,7 +177,7 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 
 		i = 0;
 
-		//3b Update hidden neuron biases
+		//Update hidden neuron biases
 		while (i < NETWORK_TWO)
 		{
 			double delta = eta * net->head->next->neurons[i]->GetGradient();
@@ -188,7 +188,7 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 
 		i = 0;
 
-		//4 Update output neurons weights
+		//Update output neurons weights
 		while (i < net->head->next->neurons.size())
 		{
 			int j = 0;
@@ -223,9 +223,6 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 
 		propagationAnswear = CalculateOutputNeuronAnswearError(destinationValue, net->tail->neurons[i]->GetOutputFunction());
 
-		//
-		bledy = propagationAnswear;
-		//
 		iterator++;
 
 	} // end of weight update 
@@ -234,7 +231,7 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 
 	double finalResult = net->tail->neurons[i]->GetOutputFunction();
 	
-	xyz = finalResult;
+	endResult = finalResult;
 	//finalResult = log(finalResult/(1-finalResult));
 	
 	//finalResult = -log(1/finalResult - 1);
@@ -340,12 +337,3 @@ double BackPropagation::CalculateOutputNeuronAnswearError(double expectedAnswear
 	return outputError; 
 }
 
-double BackPropagation::qwerty()
-{
-	return xyz;
-}
-
-double BackPropagation::asdf()
-{
-	return bledy;
-}

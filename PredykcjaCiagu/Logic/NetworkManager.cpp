@@ -1,12 +1,12 @@
 #include "NetworkManager.h"
 
 
-
 NetworkManager::NetworkManager(void)
 {
 	network = new NeuralNetwork(FIRST_NETWORK, SECOND_NETWORK, THIRD_NETWORK);
 	propagation = new BackPropagation(); 
 	reader = new TxtFileReader();
+	writer = new TxtFileWriter();
 	temp1 = temp2 = 0;
 
 	reader->ReadFile("a.txt");
@@ -17,7 +17,9 @@ NetworkManager::~NetworkManager(void)
 {
 	DestroyNetwork();
 	delete network;
-	delete propagation;
+	delete propagation; 
+	delete reader;
+	delete writer;
 }
 
 
@@ -51,7 +53,6 @@ void NetworkManager::TeachNetwork()
 
 	data.swap(reader->GetData());
 	dataSize = data.size();
-//	converter->ConvertDataToSigmoidFunctionRange(data);
 	convertedData.swap(data);
 
 
@@ -65,8 +66,7 @@ void NetworkManager::TeachNetwork()
 			p1 = temp3;
 			network = propagation->BackPropagationMethod(temp1, temp2, temp3, network);
 			i++;
-			test = propagation->qwerty();
-			zapamietajBlad = propagation->asdf();
+			test = propagation->GetEndResult();
 		}
 		// przygotowanie danych do metody Calculate (by tam ponownie nie iterowaæ po tablicy)
 		temp1 = convertedData[i];
@@ -88,9 +88,15 @@ double NetworkManager::Calculate()
 	return result;
 }
 
+void NetworkManager::SaveToFile(std::string fName, std::vector<double> data)
+{
+	writer->WriteFile(fName, data);
+}
+
 double NetworkManager::RunNetwork()
 {
 	double result = 0;
+	double zlicz = 0;
 
 	network = CreateNetwork();
 	TeachNetwork();
@@ -100,20 +106,15 @@ double NetworkManager::RunNetwork()
 	}
 	finalyNetworkResult = result;
 
-	//
-	double zlicz = (p1 * finalyNetworkResult)/test;
-	cout << "zliczone: " << zlicz << endl;
+	zlicz = (p1 * finalyNetworkResult)/test;
 
-	cout << endl;
+	tabWynik.push_back(zlicz);
+	
+	finalyNetworkResult = zlicz;
 
-	//double wyswietL = (p1 * zapamietajBlad)/test;
-	//cout << "blad:"<< wyswietL <<endl;
+	SaveToFile ("OdpSieci.txt", tabWynik);
 
-	cout << "blad wynosi" << zapamietajBlad << endl;
-	//
-
-
-	return result;
+	return finalyNetworkResult;
 }
 
 

@@ -89,13 +89,13 @@ public:
 	}
 
 	/** Getter do pojedynczej wagi neurona */
-	double GetOneWeight(double whichInput)
+	double GetOneWeight(int whichInput)
 	{
 		return weightsOfNeuronInputs[whichInput];
 	}
 
 	/** Setter do pojedynczej wagi neurona */
-	void SetOneWeight(double whichInput, double tWeight)
+	void SetOneWeight(int whichInput, double tWeight)
 	{
 		weightsOfNeuronInputs[whichInput] = tWeight;
 	}

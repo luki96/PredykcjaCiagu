@@ -19,7 +19,7 @@ NeuralNetwork::~NeuralNetwork()
 	{
 		NeuronContainer* temp = head;
 		head = head->next;
-		for (int i = 0; i < temp->neurons.size(); i++)
+		for (unsigned int i = 0; i < temp->neurons.size(); i++)
 		{
 			delete temp->neurons.at(i);
 		}
