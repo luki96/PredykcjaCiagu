@@ -1,5 +1,5 @@
 #include "GUI.h"
-
+using namespace std;
 
 GUI::GUI(void)
 {
@@ -13,7 +13,22 @@ GUI::~GUI(void)
 	delete this->consoleMenu;
 }
 
+void GUI::ClearScreen()
+{
+	system("cls");
+}
+
+void GUI::PauseProgram()
+{
+	system("pause");
+}
+
 void GUI::PrintApplicationMenu()
 {
 	this->consoleMenu->PrintMenu();
+}
+
+void GUI::PrintMessage(string message)
+{
+	this->consoleMenu->Print(message);
 }

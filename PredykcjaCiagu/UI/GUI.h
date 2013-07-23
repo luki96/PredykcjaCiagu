@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "..\UI\ConsoleMenu.h"
 
 /** Klasa odpowiada za interfejs aplikacji */
@@ -20,8 +21,17 @@ public:
 	/** Wirtualny destruktor klasy GUI */
 	virtual ~GUI(void);
 
+	/** Statyczna metoda wywolujaca polecenie systemowe czyszczace konsole */
+	static void ClearScreen();
+
+	/** Statyczna metoda wywolujaca polecenie systemowe wstrzymujace program */
+	static void PauseProgram();
+
 	/** Metoda wyswietla menu glowne programu */
 	void PrintApplicationMenu();
+
+	/** Metoda wyswietla wiadomosc na konsoli za pomoca obiektu ConsoleMenu */
+	void PrintMessage(std::string message);
 
 	/** Getter dla pola numberOfMenuOptions
 	@return Ilosc opcji dostepnych w menu glownym programu
