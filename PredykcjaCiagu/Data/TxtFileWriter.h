@@ -17,9 +17,9 @@ public:
 	TxtFileWriter(void);
 
 	/** Destruktor bezargumentowy */ 
-	~TxtFileWriter(void);
+	virtual ~TxtFileWriter(void);
 
 	/** Metoda do zapisu do pliku (definicja do metody z interfejsu) */
-	void WriteFile(std::string fileName, std::vector<double> dataToFile);
+	virtual bool WriteFile(std::string fileName, std::vector<double> dataToFile);
 };
 

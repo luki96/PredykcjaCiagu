@@ -15,7 +15,7 @@ public:
 
 	/** Metoda czysto wirtualna za pomoca ktorej bedzie mozliwy zapis do pliku
 	*/
-	virtual void WriteFile(std::string fileName, std::vector<double> dataToFile) = 0;
+	virtual bool WriteFile(std::string fileName, std::vector<double> dataToFile) = 0;
 
 };
 
