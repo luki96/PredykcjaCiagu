@@ -9,7 +9,7 @@ class ConsoleMenu : public IPrintable
 {
 private:
 
-	/** Tablica zawierajaca opcje dostepne w menu programu */
+	/** Tablica zawieraj¹ca opcje dostêpne w menu programu */
 	std::vector<std::string> menuOptions;
 
 public:
@@ -21,11 +21,11 @@ public:
 	virtual ~ConsoleMenu(void);
 
 	/** Implementacja metody z interfejsu IPrintable 
-	@param std::string message Wiadomosc, ktora ma zostac wyswietlona
+	@param std::string message Wiadomoœæ, która ma zostaæ wyœwietlona
 	*/
 	virtual void Print(std::string message);
 
-	/** Metoda wyswietla za pomoca metody print z interfejsu IPrintable menu programu */
+	/** Metoda wyœwietla za pomoc¹ metody print z interfejsu IPrintable menu programu */
 	void PrintMenu();
 
 	/** Getter dla pola menuOptions

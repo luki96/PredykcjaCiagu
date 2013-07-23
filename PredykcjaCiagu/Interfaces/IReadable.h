@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-/** Interfejs umozliwiajacy odczyt danych z pliku */
+/** Interfejs umo¿liwiaj¹cy odczyt danych z pliku */
 class IReadable
 {
 public:
@@ -13,15 +13,15 @@ public:
 	/** Wirtualny destruktor interfejsu IReadable */
 	virtual ~IReadable(void);
 
-	/** Metoda czysto wirtualna za pomoca ktorej bedzie mozliwy odczyt pliku
-	@param std::string path Sciezka do pliku
-	@return true, gdy plik zostal poprawnie odczytany.
-	W przeciwnym wypadku wartoscia zwracana jest false
+	/** Metoda czysto wirtualna za pomoc¹ której bêdzie mo¿liwy odczyt pliku
+	@param std::string path Œcie¿ka do pliku
+	@return true, gdy plik zosta³ poprawnie odczytany.
+	W przeciwnym wypadku wartoœci¹ zwracan¹ jest false
 	*/
 	virtual bool ReadFile(std::string path) = 0;
 
-	/** Czysto wirtualny getter dla tablicy, w ktorej znajduje sie wczytany plik
-	@return std::vector<int> tablica zawierajaca zawartosc wczytanego pliku
+	/** Czysto wirtualny getter dla tablicy, w której znajduje siê wczytany plik
+	@return std::vector<int> tablica zawieraj¹ca zawartoœæ wczytanego pliku
 	*/
 	virtual std::vector<double> GetData() = 0;
 

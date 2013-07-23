@@ -1,15 +1,20 @@
 #pragma once
 #include "..\Interfaces\IReadable.h"
+#include "..\Interfaces\IWritable.h"
 #include "..\Data\TxtFileReader.h"
 
-/** Klasa odpowiada za zarzadzanie klasami odczytujacymi / zapisujacymi pliki */
+/** Klasa odpowiada za zarz¹dzanie klasami odczytuj¹cymi / zapisuj¹cymi pliki */
 class FileManager
 {
 public:
 
-	/** Prywatny wskaznik typu IReadable, pod ktory bedzie mozna "podpiac" 
+	/** Prywatny wskaŸnik typu IReadable, pod który bdzie mo¿na "podpi¹æ" 
 	klasy implementujace ten interfejs */
 	IReadable* ireader;
+
+	/** Prywatny wskaŸnik typu IWritable, pod który bdzie mo¿na "podpi¹æ" 
+	klasy implementujace ten interfejs */
+	IWritable* iwriter;
 
 public:
 	

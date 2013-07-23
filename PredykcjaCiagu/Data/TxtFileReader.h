@@ -4,12 +4,12 @@
 #include <vector>
 #include "..\Interfaces\IReadable.h"
 
-/** Klasa odpowiada za odczyt plikow tekstowych */
+/** Klasa odpowiada za odczyt plików tekstowych */
 class TxtFileReader : public IReadable
 {
 private:
 
-	/** Tablica w ktorej bedzie zapisana zawartosc wczytywanego pliku */
+	/** Tablica w której bêdzie zapisana zawartoœæ wczytywanego pliku */
 	std::vector<double> data;
 
 	/** Zmienna plikowa */
@@ -24,14 +24,14 @@ public:
 	virtual ~TxtFileReader(void);
 
 	/** Implementacja metody z interfejsu IReadable 
-	@param std::string path Sciezka wraz z nazwa pliku
-	@return true, jezeli powiedzie sie operacja otwracia i odczytu pliku.
-	W przeciwnym wypadku wartoscia zwracana jest false
+	@param std::string path Œcie¿ka wraz z nazw¹ pliku
+	@return true, jezeli powiedzie siê operacja otwracia i odczytu pliku.
+	W przeciwnym wypadku wartoœci¹ zwracan¹ jest false
 	*/
 	virtual bool ReadFile(std::string path);
 	
 	/** Implementacja gettera dla pola data z interfejsu IReadable
-	@return tablica zawierajaca wczytany plik z dysku
+	@return tablica zawieraj¹ca wczytany plik z dysku
 	*/
 	std::vector<double> GetData()
 	{

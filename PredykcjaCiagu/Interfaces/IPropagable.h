@@ -1,7 +1,7 @@
 #pragma once
 #include "..\Logic\NeuralNetworkComponents\NeuralNetwork.h"
 
-/** Interfejs wykorzystywany do implementacji w klasach propagujacych sieæ
+/** Interfejs wykorzystywany do implementacji w klasach propaguj¹cych sieæ
 	neuronow¹ i uzyskuj¹cych z niej wyniki.
 
 	UWAGA: Elementy sieci, musz¹ byæ typu NeuralNetwork !!! */ 
@@ -15,7 +15,7 @@ public:
 	/** Wirtualny destruktor */
 	~IPropagable(void);
 
-	/** Czysto wirtualna metoda do uczenia siecii neuronowej */
+	/** Czysto wirtualna metoda do uczenia sieci neuronowej */
 	virtual NeuralNetwork* BackPropagationMethod(double, double, double, NeuralNetwork* ) = 0;
 
 	/** Czysto wirtualna metoda, do wykonania ostatnich obliczeñ, na siecii */

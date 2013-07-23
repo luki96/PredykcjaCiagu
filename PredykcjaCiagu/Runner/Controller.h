@@ -2,22 +2,18 @@
 #include <sstream>
 #include "..\UI\GUI.h"
 #include "..\Logic\ConsoleMenuListener.h"
-#include "..\Logic\FileManager.h"
 #include "..\Logic\NetworkManager.h"
 
-/** Klasa odpowiada za sterowanie przeplywem dzialania programu */
+/** Klasa odpowiada za sterowanie przep≥ywem dzia≥ania programu */
 class Controller
 {
 private:
 
-	/** Prywatny wskaznik do obiektu klasy GUI */
+	/** Prywatny wskaünik do obiektu klasy GUI */
 	GUI* gui;
 
-	/** Prywatny wskaznik do obiektu klasy ConsoleMenuListener */
+	/** Prywatny wskaünik do obiektu klasy ConsoleMenuListener */
 	ConsoleMenuListener* consoleMenuListener;
-
-	/** Prywatny wskaznik do obiektu klasy FileManager */
-	FileManager* fileManager;
 
 	/** Prywatny wskaünik do obiektu klasy NetworkManager */
 	NetworkManager* network;
@@ -29,7 +25,7 @@ public:
 	/** Destruktor klasy Controller */
 	~Controller(void);
 
-	/** Metoda odpowiada za petle glowna programu */
+	/** Metoda odpowiada za pÍtlÍ g≥Ûwnπ programu */
 	void Run();
 };
 

@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-/** Interfejs umozliwiajacy wyswietlanie danych na ekranie */
+/** Interfejs umo¿liwiaj¹cy wyœwietlanie danych na ekranie */
 class IPrintable
 {
 public:
@@ -11,8 +11,8 @@ public:
 	virtual ~IPrintable(void);
 	
 	/** 
-	Metoda czysto wirtualna za pomoca ktorej beda wyswietlane dane 
-	@param message Dane, ktore maja zostac wyswietlone
+	Metoda czysto wirtualna za pomoc¹ której bêd¹ wyœwietlane dane 
+	@param message Dane, które maj¹ zostaæ wyœwietlone
 	*/
 	virtual void Print(std::string message) = 0;
 };

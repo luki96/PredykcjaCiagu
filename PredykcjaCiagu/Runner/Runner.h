@@ -6,7 +6,7 @@ class Runner
 {
 private:
 
-	/** Prywatny wskaznik do obiektu klasy Controller */
+	/** Prywatny wskaünik do obiektu klasy Controller */
 	Controller* controller;
 
 public:
@@ -17,7 +17,7 @@ public:
 	/** Destruktor klasy Runner */
 	~Runner(void);
 
-	/** Metoda uruchamiajaca program */
+	/** Metoda uruchamiajπca program */
 	void RunProgram();
 };
 

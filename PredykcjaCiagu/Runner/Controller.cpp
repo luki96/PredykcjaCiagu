@@ -5,7 +5,6 @@ Controller::Controller(void)
 {
 	this->gui = new GUI;
 	this->consoleMenuListener = new ConsoleMenuListener;
-	this->fileManager = new FileManager;
 	this->network = new NetworkManager();
 }
 
@@ -14,7 +13,6 @@ Controller::~Controller(void)
 {
 	delete this->gui;
 	delete this->consoleMenuListener;
-	delete this->fileManager;
 	delete this->network;
 }
 
@@ -39,7 +37,6 @@ void Controller::Run()
 				{
 					this->gui->ClearScreen();
 					std::ostringstream stringResult;
-					this->fileManager->ireader->ReadFile("a.txt");
 					this->network->RunNetwork();
 					double result = this->network->GetFinalResult();
 					stringResult << result;

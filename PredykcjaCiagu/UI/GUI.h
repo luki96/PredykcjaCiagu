@@ -7,10 +7,10 @@ class GUI
 {
 private:
 
-	/** Prywatny wskaznik do obiektu klasy ConsoleMenu */
+	/** Prywatny wskaŸnik do obiektu klasy ConsoleMenu */
 	ConsoleMenu* consoleMenu;
 
-	/** Ilosc opcji dostepnych w menu glownym programu */
+	/** Iloœæ opcji dostêpnych w menu g³ównym programu */
 	int numberOfMenuOptions;
 
 public:
@@ -21,20 +21,20 @@ public:
 	/** Wirtualny destruktor klasy GUI */
 	virtual ~GUI(void);
 
-	/** Statyczna metoda wywolujaca polecenie systemowe czyszczace konsole */
+	/** Statyczna metoda wywo³uj¹ca polecenie systemowe czyszcz¹ce konsolê */
 	static void ClearScreen();
 
-	/** Statyczna metoda wywolujaca polecenie systemowe wstrzymujace program */
+	/** Statyczna metoda wywo³uj¹ca polecenie systemowe wstrzymuj¹ce program */
 	static void PauseProgram();
 
-	/** Metoda wyswietla menu glowne programu */
+	/** Metoda wyœwietla menu g³ówne programu */
 	void PrintApplicationMenu();
 
-	/** Metoda wyswietla wiadomosc na konsoli za pomoca obiektu ConsoleMenu */
+	/** Metoda wyœwietla wiadomoœæ na konsoli za pomoc¹ obiektu ConsoleMenu */
 	void PrintMessage(std::string message);
 
 	/** Getter dla pola numberOfMenuOptions
-	@return Ilosc opcji dostepnych w menu glownym programu
+	@return Iloœæ opcji dostêpnych w menu g³ównym programu
 	*/
 	int GetNumberOfMenuOptions()
 	{
