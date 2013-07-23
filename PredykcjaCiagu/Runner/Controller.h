@@ -1,4 +1,5 @@
 #pragma once
+#include <sstream>
 #include "..\UI\GUI.h"
 #include "..\Logic\ConsoleMenuListener.h"
 #include "..\Logic\FileManager.h"
