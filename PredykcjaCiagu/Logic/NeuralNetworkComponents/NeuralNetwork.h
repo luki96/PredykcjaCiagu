@@ -1,6 +1,6 @@
 #pragma once
-#include "Neuron.h"
 #include <vector>
+#include "Neuron.h"
 
 /** Klasa  odpowiadaj¹ca za sieæ neuronow¹ */
 class NeuralNetwork
@@ -14,13 +14,16 @@ public:
 	/** Konstruktor trój-argumentowy klasy NeuralNetwork (przekazywane s¹, wielkoœci poszczególnych warstw siecii) */
 	NeuralNetwork(int, int, int);
 
-	/** Wirtualny destruktor klasy, NeuralNetwork */
+	/** Wirtualny destruktor klasy NeuralNetwork */
 	virtual ~NeuralNetwork();
 
 	/** Struktura danych przechowuj¹ca kolejne warstwy sieci neuronowej */
 	struct NeuronContainer
 	{
+		/** Tablica wskaŸników na neurony w poszczególnych warstwach sieci */
 		std::vector<Neuron*> neurons;
+
+		/** WskaŸnik na kolejn¹ warstwê */
 		NeuronContainer* next;
 	};
 
