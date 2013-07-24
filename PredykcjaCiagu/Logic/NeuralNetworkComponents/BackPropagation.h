@@ -1,14 +1,12 @@
 #pragma once
+#include <math.h>
 #include "Neuron.h"
 #include "NeuralNetwork.h"
 #include "..\..\Interfaces\IPropagable.h"
-#include <iostream>
-#include <math.h>
 
 using namespace std;
 
-/** Klasa dziedzicz¹ca interfejs IPropagable
-	s³u¿¹ca do wykonania wstecznej propagacji */
+/** Klasa s³u¿¹ca do wykonania wstecznej propagacji */
 class BackPropagation: public IPropagable
 {
 
@@ -21,7 +19,7 @@ private:
 	 double ERROR; 
 
 public:
-	/** Wynik koncowy */ 
+	/** Wynik koñcowy */ 
 	double endResult;
 
 	/** Konstruktor bezargumentowy klasy BackPropagation */ 
@@ -36,10 +34,15 @@ public:
 	/** Wirtualna metoda z interfejsu IPropagable, pozwalaj¹ca na uzyskanie wyników z sieci neuronowej */
 	 virtual double NetworkResult(double, double, NeuralNetwork* );
 
-	 /** Obliczenie b³êdu z neuronu wyjœciowego (b³¹d: (|Wartoœæ oczekiwana - Wartoœæ otrzymana|) */
+	 /** Obliczenie b³êdu z neuronu wyjœciowego (b³¹d: (|Wartoœæ oczekiwana - Wartoœæ otrzymana|) 
+	 @param double networkAnswear Uzyskana odpowiedŸ sieci
+	 @param double expectedAnswear OdpowiedŸ, której oczekujemy
+	 */
 	 double CalculateOutputNeuronAnswearError(double networkAnswear, double expectedAnswear);
 
-	 /** Geeter do zmiennej endResult */ 
+	 /** Geeter do zmiennej endResult 
+	 @return double endResult Koñcowa odpowiedŸ sieci
+	 */ 
 	 double GetEndResult()
 	 {
 		 return endResult;

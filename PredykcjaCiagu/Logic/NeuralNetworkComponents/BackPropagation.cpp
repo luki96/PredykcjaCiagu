@@ -18,7 +18,6 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 	double derivative = 0;
 	int i = 0;
 	int tab = 0;
-	int iterator = 0;
 	double destinationValue = z;
 	double zerro = 0;
 	double propagationAnswear = 0;
@@ -26,7 +25,7 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 	std::vector<double> neuronsResults;
 	std::vector<double> neutralizeWeights; // tablica do ustawienia wag neuronów wejœciowych na wart. = 1 
 
-	destinationValue = destinationValue/(1000);//1/(1 + exp(-(destinationValue))); // konwersja destinationValues do przedzialu {0,1}
+	destinationValue = destinationValue /(1000); // konwersja destinationValues do przedzialu {0,1}
 	double firstResult = 0;
 
 	while (i < NETWORK_ONE)
@@ -111,133 +110,114 @@ NeuralNetwork* BackPropagation::BackPropagationMethod(double x, double y, double
 	i = 0;
 
 	// Back propagation 
-	iterator = 0;
 
-	//while((iterator < 25) && (propagationAnswear > ERROR))
+	//Compute output gradients 
+	while (i <  NETWORK_THREE) 
 	{
+		double networkAnswear = net->tail->neurons[i]->GetOutputFunction();
 
-		
+		derivative = (1 - networkAnswear ) *  networkAnswear;
+		net->tail->neurons[i]->SetGradient(derivative * (destinationValue - networkAnswear));
+		i++;
+	}
 
-		//Compute output gradients 
-		while (i <  NETWORK_THREE) 
+	derivative = 0;
+	i = 0;
+
+	//Compute hidden gradients
+	while (i < NETWORK_TWO)
+	{
+		double hiddenAnswear = net->head->next->neurons[i]->GetOutputFunction(); 
+		double sum = 0;
+		int ZERO = 0;
+		unsigned int j = 0;
+		std::vector<double> numbOfInputs;
+
+		derivative = ( 1 - hiddenAnswear) * hiddenAnswear;
+
+		numbOfInputs.clear();
+		numbOfInputs.swap(net->tail->neurons[ZERO]->GetWeight());
+
+		while (j < numbOfInputs.size())
 		{
-			double networkAnswear = net->tail->neurons[i]->GetOutputFunction();
-
-			derivative = (1 - networkAnswear ) *  networkAnswear;
-			net->tail->neurons[i]->SetGradient(derivative * (destinationValue - networkAnswear));
-			i++;
+			sum += net->tail->neurons[ZERO]->GetGradient() * numbOfInputs[j];
+			j++;
 		}
 
-		derivative = 0;
-		i = 0;
+		net->head->next->neurons[i]->SetGradient(derivative * sum);
 
-		//Compute hidden gradients
-		while (i < NETWORK_TWO)
+		j = 0;
+		i++;
+	}
+
+	i = 0;
+
+	//Update hidden neuron weights
+	while (i < (net->head->neurons.size())) // iteracja po iloœci wejœc  w neuronach warstwy ukrytej 
+	{
+		int j = 0;
+
+		while (j < NETWORK_TWO)  // iteracja po warstwie ukrytej 
 		{
-			double hiddenAnswear = net->head->next->neurons[i]->GetOutputFunction(); 
-			double sum = 0;
-			int ZERO = 0;
-			unsigned int j = 0;
-			std::vector<double> numbOfInputs;
-
-			derivative = ( 1 - hiddenAnswear) * hiddenAnswear;
-
-			numbOfInputs.clear();
-			numbOfInputs.swap(net->tail->neurons[ZERO]->GetWeight());
-
-			while (j < numbOfInputs.size())
-			{
-				sum += net->tail->neurons[ZERO]->GetGradient() * numbOfInputs[j];
-				j++;
-			}
-
-			net->head->next->neurons[i]->SetGradient(derivative * sum);
-
-			j = 0;
-			i++;
+			double delta = eta * net->head->next->neurons[j]->GetGradient() * net->head->neurons[i]->GetOutputFunction();
+			delta += net->head->next->neurons[j]->GetOneWeight(i);
+			net->head->next->neurons[j]->SetOneWeight(i, delta);
+			j++;
 		}
 
-		i = 0;
+		i++;
+	}
 
-		//Update hidden neuron weights
-		while (i < (net->head->neurons.size())) // iteracja po iloœci wejœc  w neuronach warstwy ukrytej 
+	i = 0;
+
+	//Update hidden neuron biases
+	while (i < NETWORK_TWO)
+	{
+		double delta = eta * net->head->next->neurons[i]->GetGradient();
+		delta += net->head->next->neurons[i]->GetBias();
+		net->head->next->neurons[i]->SetBias(delta);
+		i++;
+	}
+
+	i = 0;
+
+	//Update output neurons weights
+	while (i < net->head->next->neurons.size())
+	{
+		int j = 0;
+
+		while (j < NETWORK_THREE)
 		{
-			int j = 0;
-
-			while (j < NETWORK_TWO)  // iteracja po warstwie ukrytej 
-			{
-				double delta = eta * net->head->next->neurons[j]->GetGradient() * net->head->neurons[i]->GetOutputFunction();
-				delta += net->head->next->neurons[j]->GetOneWeight(i);
-				net->head->next->neurons[j]->SetOneWeight(i, delta);
-				j++;
-			}
-
-			i++;
+			double delta = eta * net->tail->neurons[j]->GetGradient() * net->head->next->neurons[i]->GetOutputFunction(); 
+			delta += net->tail->neurons[j]->GetOneWeight(i);
+			net->tail->neurons[j]->SetOneWeight(i, delta);
+			j++;
 		}
 
-		i = 0;
+		i++;
+	}
 
-		//Update hidden neuron biases
-		while (i < NETWORK_TWO)
-		{
-			double delta = eta * net->head->next->neurons[i]->GetGradient();
-			delta += net->head->next->neurons[i]->GetBias();
-			net->head->next->neurons[i]->SetBias(delta);
-			i++;
-		}
+	i = 0;
 
-		i = 0;
+	// 4b Update outputs neurons biases 
+	while (i < NETWORK_THREE)
+	{
+		double delta = eta * net->tail->neurons[i]->GetGradient();
+		delta += net->tail->neurons[i]->GetBias();
+		net->tail->neurons[i]->SetBias(delta);
 
-		//Update output neurons weights
-		while (i < net->head->next->neurons.size())
-		{
-			int j = 0;
+		i++;
+	}
 
-			while (j < NETWORK_THREE)
-			{
-				double delta = eta * net->tail->neurons[j]->GetGradient() * net->head->next->neurons[i]->GetOutputFunction(); 
-				delta += net->tail->neurons[j]->GetOneWeight(i);
-				net->tail->neurons[j]->SetOneWeight(i, delta);
-				j++;
-			}
+	i = 0;
+	//
+	//double abc = net->tail->neurons[i]->GetOutputFunction();
+	//
 
-			i++;
-		}
-
-		i = 0;
-
-		// 4b Update outputs neurons biases 
-		while (i < NETWORK_THREE)
-		{
-			double delta = eta * net->tail->neurons[i]->GetGradient();
-			delta += net->tail->neurons[i]->GetBias();
-			net->tail->neurons[i]->SetBias(delta);
-
-			i++;
-		}
-
-		i = 0;
-		//
-		double abc = net->tail->neurons[i]->GetOutputFunction();
-		//
-
-		propagationAnswear = CalculateOutputNeuronAnswearError(destinationValue, net->tail->neurons[i]->GetOutputFunction());
-
-		iterator++;
-
-	} // end of weight update 
-
-	iterator = 0;
+	propagationAnswear = CalculateOutputNeuronAnswearError(destinationValue, net->tail->neurons[i]->GetOutputFunction());
 
 	double finalResult = net->tail->neurons[i]->GetOutputFunction();
-	
 	endResult = finalResult;
-	//finalResult = log(finalResult/(1-finalResult));
-	
-	//finalResult = -log(1/finalResult - 1);
-
-	//cout << finalResult << "   " << z << endl;;  
-
 	return net;
 }
 
