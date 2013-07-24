@@ -22,15 +22,9 @@ bool ConsoleMenuListener::ValidateKey(int key, int numberOfMenuOptions)
 int ConsoleMenuListener::ListenForKey(int numberOfMenuOptions)
 {
 	char key;
-	while(true)
-	{
-		cin >> key;
-		bool result = ValidateKey(key, numberOfMenuOptions);
-		if (result == true)
-		{
-			key -= 48;		// konwersja do przedzialu 0 - 9
-			break;
-		}
-	}
+	cin >> key;
+	bool result = ValidateKey(key, numberOfMenuOptions);
+	key -= 48;		// konwersja do przedzialu 0 - 9
+
 	return key;
 }
