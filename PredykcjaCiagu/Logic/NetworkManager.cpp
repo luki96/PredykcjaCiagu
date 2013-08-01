@@ -74,7 +74,7 @@ void NetworkManager::TeachNetwork()
 	}
 	else
 	{
-		std::cout << "Wprowadzono zbyt ma³o danych, aby sieæ mog³a zadzia³aæ." << std::endl;
+		std::cout << "Wprowadzono zbyt ma³o danych, aby siec mogla zadzialac." << std::endl;
 	}
 
 }

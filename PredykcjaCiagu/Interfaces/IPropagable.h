@@ -2,7 +2,9 @@
 #include "..\Logic\NeuralNetworkComponents\NeuralNetwork.h"
 
 /** Interfejs wykorzystywany do implementacji w klasach propaguj¹cych sieæ
-	neuronow¹ i uzyskuj¹cych z niej wyniki.
+	neuronow¹ i uzyskuj¹cych z niej wyniki. Umo¿liwia zwiêkszenie uniwersalnoœci i
+	³atwoœæ wprowadzania zmian. Implementuje metody do uczenia sieci i wykonywania 
+	na niej obliczeñ 
 
 	UWAGA: Elementy sieci, musz¹ byæ typu NeuralNetwork !!! */ 
 class IPropagable
