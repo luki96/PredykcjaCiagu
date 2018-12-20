@@ -13,4 +13,4 @@ http://takinginitiative.net/2008/06/23/c-back-propagation-neural-network-code-v2
 http://hxr99.blogspot.com/2011/12/how-to-backpropagation-neural-network.html
 http://www.codeproject.com/Articles/13582/Back-propagation-Neural-Net
 http://zerkpage.tripod.com/project.htm
-
+---------------------------------------------------------------------------------------------
